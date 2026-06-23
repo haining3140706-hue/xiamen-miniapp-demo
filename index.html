@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"/>
+<title>鹭岛记忆 · 公众档案服务</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=block" rel="stylesheet"/>
+<style>
+/* ═════════════════════ DESIGN TOKENS ═════════════════════ */
+:root{
+--p50:#fdf5f2;--p100:#f9e5dd;--p200:#f2cbbb;--p300:#e8a890;--p400:#dd8a6e;--p500:#c4705a;--p600:#a85a48;--p700:#8c4637;--p800:#733a2f;--p900:#5c2e26;
+--o50:#eef7f7;--o100:#d4ebeb;--o200:#a8d5d4;--o300:#72b8b6;--o400:#4d9a98;--o500:#357f7d;--o600:#2c6e6d;--o700:#1f4a53;--o800:#183a43;--o900:#112b33;
+--a50:#fefaf3;--a100:#fdf0dc;--a200:#fae2ba;--a300:#f5cc8c;--a400:#e8a85f;--a500:#d4915c;--a600:#b87846;--a700:#965e37;--a800:#7a4d2f;
+--bg:#f9f7f3;--sur:#fff;--shv:#f5f2ed;--tx:#1a1816;--t2:#6b6560;--t3:#99938e;--ti:#fefdfb;
+--bd:#e8e3dd;--bds:#d5cfc7;--ok:#5a9e6f;--warn:#d4915c;--err:#c44e4e;--info:#357f7d;
+--fs:Noto Sans SC,-apple-system,PingFang SC,Microsoft YaHei,sans-serif;
+--ff:Noto Serif SC,STSong,SimSun,serif;
+--fsx:clamp(.6875rem,1.2vw,.75rem);--fss:clamp(.8125rem,1.4vw,.875rem);--fsb:clamp(.9375rem,1.6vw,1rem);
+--fsl:clamp(1.0625rem,1.8vw,1.125rem);--fsxl:clamp(1.1875rem,2.2vw,1.25rem);--fs2xl:clamp(1.375rem,2.8vw,1.5rem);
+--fs3xl:clamp(1.75rem,3.6vw,2rem);--fs4xl:clamp(2rem,4.8vw,2.5rem);
+--1:.25rem;--2:.5rem;--3:.75rem;--4:1rem;--5:1.25rem;--6:1.5rem;--8:2rem;--10:2.5rem;--12:3rem;--16:4rem;
+--rs:.5rem;--rm:.75rem;--rl:1rem;--rx:1.25rem;--r2:1.5rem;--rf:9999px;
+--x1:0 1px 2px rgba(28,24,20,.04);--x2:0 1px 3px rgba(28,24,20,.06),0 1px 2px rgba(28,24,20,.04);
+--x3:0 4px 12px rgba(28,24,20,.06),0 2px 4px rgba(28,24,20,.04);
+--x4:0 12px 32px rgba(28,24,20,.08),0 4px 8px rgba(28,24,20,.04);
+--eo:cubic-bezier(.25,1,.5,1);--ex:cubic-bezier(.16,1,.3,1);--esp:cubic-bezier(.34,1.56,.64,1);
+--df:120ms;--dn:250ms;--ds:400ms;
+--nav:70px;--h:56px;--mw:430px;--sb:env(safe-area-inset-bottom,0);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-family:var(--fs);color:var(--tx);background:var(--bg);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{min-height:100dvh;line-height:1.55;-webkit-font-smoothing:antialiased;display:flex;justify-content:center;
+background:radial-gradient(ellipse 80% 60% at 50% 0,rgba(196,112,90,.04),transparent),radial-gradient(ellipse 60% 50% at 80% 100%,rgba(53,127,125,.03),transparent),var(--bg)}
+button,input,textarea,select{font:inherit;color:inherit;border:none;background:none}
+button{cursor:pointer;user-select:none;touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2.5px solid var(--o500);outline-offset:2px;border-radius:var(--rs)}
+
+/* ═════════════════════ SHELL ═════════════════════ */
+.app-shell{position:relative;width:min(100vw,var(--mw));min-height:100dvh;background:var(--bg);overflow:hidden;box-shadow:var(--x4)}
+.app-shell::before{content:'';position:fixed;top:0;left:50%;z-index:200;width:min(100vw,var(--mw));height:3px;transform:translateX(-50%);background:linear-gradient(90deg,var(--p500),var(--a400),var(--o400))}
+
+/* ═════════════════════ HEADER ═════════════════════ */
+.app-header{position:sticky;top:3px;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:var(--3) var(--5);background:rgba(249,247,243,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(232,227,221,.6)}
+.hd-l{display:flex;align-items:center;gap:var(--3)}
+.hd-lo{width:38px;height:38px;border-radius:var(--rm);background:linear-gradient(135deg,var(--p500),var(--a400));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(196,112,90,.3)}
+.hd-lo svg{width:22px;height:22px;color:#fff}
+.hd-t{display:flex;flex-direction:column;gap:1px}
+.hd-s{font-size:var(--fsx);color:var(--p600);font-weight:700;letter-spacing:.03em;line-height:1}
+.hd-ti{font-size:var(--fsxl);font-family:var(--ff);font-weight:900;color:var(--tx);line-height:1.1}
+
+/* ═════════════════════ PAGE STACK ═════════════════════ */
+.pages-container{position:relative;width:100%;height:calc(100dvh - var(--h) - 3px);overflow:hidden}
+.stack-page{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:var(--4) var(--5);padding-bottom:calc(var(--nav) + var(--8) + var(--sb));background:var(--bg);transform:translateX(110%);transition:transform var(--ds) var(--eo);z-index:1;visibility:hidden;pointer-events:none}
+.stack-page.active{transform:translateX(0);z-index:10;visibility:visible;pointer-events:auto}
+.stack-page.entering{transform:translateX(110%);visibility:visible;pointer-events:none;z-index:11;transition:none}
+.stack-page.leaving{transform:translateX(-15%);visibility:visible;pointer-events:none;z-index:9}
+.stack-page.is-sub{padding-top:0;padding-bottom:var(--8)}
+.stack-page::-webkit-scrollbar{width:0}
+
+/* ═════════════════════ SUB HEADER ═════════════════════ */
+.sub-hd{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:var(--3);padding:var(--3) 0;margin-bottom:var(--4);background:var(--bg)}
+.btn-back{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--rf);background:var(--sur);border:1px solid var(--bd);color:var(--t2);transition:all var(--df) var(--ex);flex-shrink:0}
+.btn-back:active{background:var(--shv);transform:scale(.94)}
+.sub-hd h2{font-family:var(--ff);font-weight:900;font-size:var(--fsl);color:var(--tx);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub-act{display:flex;gap:var(--2);flex-shrink:0}
+
+/* ═════════════════════ SHARED ═════════════════════ */
+.btn-gh{display:inline-flex;align-items:center;gap:var(--1);padding:var(--2) var(--3);border-radius:var(--rf);font-size:var(--fss);font-weight:500;color:var(--t2);background:var(--sur);border:1px solid var(--bd);transition:all var(--df) var(--ex);min-height:36px;min-width:44px}
+.btn-gh:active{background:var(--shv);transform:scale(.97);border-color:var(--bds)}
+.btn-sm{padding:var(--2) var(--4);font-size:var(--fsx);font-weight:600;border-radius:var(--rf);background:var(--sur);border:1px solid var(--bd);color:var(--o600);transition:all var(--df) var(--ex);min-height:32px;white-space:nowrap}
+.btn-sm:active{background:var(--o50);border-color:var(--o300);transform:scale(.97)}
+.btn-pr{display:inline-flex;align-items:center;justify-content:center;width:100%;height:44px;padding:0 var(--6);background:var(--p500);color:#fff;font-size:var(--fsb);font-weight:700;border-radius:var(--rl);transition:all var(--df)}
+.btn-pr:active{background:var(--p600);transform:scale(.97)}
+.btn-ol{display:inline-flex;align-items:center;justify-content:center;width:100%;height:44px;padding:0 var(--6);background:var(--sur);color:var(--tx);font-size:var(--fsb);font-weight:600;border-radius:var(--rl);border:1.5px solid var(--bd);margin-top:var(--2);transition:all var(--df)}
+.btn-ol:active{background:var(--shv);transform:scale(.97)}
+.btn-r{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 var(--5);background:var(--o600);color:#fff;font-size:var(--fss);font-weight:700;border-radius:0 var(--rl) var(--rl) 0;transition:all var(--df);flex-shrink:0}
+.btn-r:active{background:var(--o700);transform:scale(.98)}
+
+.info-card{background:var(--sur);border-radius:var(--rx);padding:var(--5);border:1px solid var(--bd);box-shadow:var(--x2);margin-bottom:var(--3)}
+.info-card h3{font-size:var(--fsb);font-weight:700;margin-bottom:var(--2)}
+.info-card p{font-size:var(--fss);color:var(--t2);line-height:1.75}
+.info-card--a{border-color:var(--p200);background:linear-gradient(135deg,var(--p50),var(--a50))}
+.banner-card{background:linear-gradient(135deg,var(--o700),var(--o800));border-radius:var(--rx);padding:var(--6);color:#fff;margin-bottom:var(--3);position:relative;overflow:hidden}
+.banner-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(196,112,90,.2),transparent 60%)}
+
+.list-card{display:flex;align-items:center;gap:var(--4);background:var(--sur);padding:var(--4) var(--5);border-radius:var(--rl);border:1px solid var(--bd);box-shadow:var(--x1);transition:all var(--df);cursor:pointer;margin-bottom:var(--2)}
+.list-card:active{background:var(--shv);transform:scale(.98)}
+.lc-ic{width:44px;height:44px;border-radius:var(--rm);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+.lc-bd{flex:1;min-width:0}
+.lc-bd h4{font-size:var(--fsb);font-weight:700;color:var(--tx);margin-bottom:2px}
+.lc-bd p{font-size:var(--fss);color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lc-ar{color:var(--t3);flex-shrink:0}
+
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--2);margin-bottom:var(--3)}
+.g-card{background:var(--sur);border-radius:var(--rl);padding:var(--4);border:1px solid var(--bd);box-shadow:var(--x1);cursor:pointer;transition:all var(--df)}
+.g-card:active{transform:scale(.97);background:var(--shv)}
+.g-ic{font-size:28px;margin-bottom:var(--2)}
+.g-ti{font-size:var(--fss);font-weight:700;margin-bottom:2px}
+.g-su{font-size:var(--fsx);color:var(--t3)}
+
+.tag{padding:var(--1) var(--3);font-size:var(--fsx);font-weight:600;border-radius:var(--rf);background:var(--p50);color:var(--p700);border:1px solid var(--p100)}
+.tag--o{background:var(--o50);color:var(--o700);border-color:var(--o100)}
+.tag--a{background:var(--a50);color:var(--a700);border-color:var(--a100)}
+.tag--ok{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+.tag--w{background:var(--a50);color:var(--a700);border-color:var(--a200)}
+
+.s-badge{flex-shrink:0;padding:var(--1) var(--3);font-size:var(--fsx);font-weight:600;border-radius:var(--rf)}
+.s-ok{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+.s-warn{background:var(--a50);color:var(--a700);border:1px solid var(--a200)}
+.s-rev{background:var(--o50);color:var(--o700);border:1px solid var(--o200)}
+.s-ai{background:#f3e8ff;color:#6b21a8;border:1px solid #e9d5ff}
+.s-pen{background:#fef3c7;color:#92400e;border:1px solid #fde68a}
+
+.input-group{margin-bottom:var(--4)}
+.input-group label{display:block;font-size:var(--fsx);font-weight:700;color:var(--p600);margin-bottom:var(--2)}
+.inp{width:100%;height:48px;padding:0 var(--4);border:1.5px solid var(--bds);border-radius:var(--rl);font-size:var(--fsb);background:var(--sur);transition:border var(--df)}
+.inp:focus{outline:none;border-color:var(--p400)}
+.inp.err{border-color:var(--err);background:#fef2f2}
+.inp-err{display:none;font-size:var(--fsx);color:var(--err);margin-top:var(--1);font-weight:500}
+.inp.err+.inp-err{display:block}
+.ta{width:100%;min-height:100px;padding:var(--3) var(--4);resize:vertical}
+.yf{display:flex}
+.yf .inp{border-radius:var(--rl) 0 0 var(--rl);border-right:none;text-align:center;font-family:var(--ff);font-weight:700;font-size:var(--fsl)}
+
+/* ═════════════════════ SEGMENT / STEPPER ═════════════════════ */
+.segment{display:flex;background:var(--shv);border-radius:var(--rf);padding:3px;margin-bottom:var(--4)}
+.seg-btn{flex:1;padding:var(--2) var(--4);border-radius:var(--rf);font-size:var(--fss);font-weight:600;color:var(--t2);text-align:center;transition:all var(--df)}
+.seg-btn.act{background:var(--sur);color:var(--tx);box-shadow:var(--x2);border:1px solid var(--bd)}
+.stepper{display:flex;margin-bottom:var(--5)}
+.step{flex:1;text-align:center;position:relative}
+.step::after{content:'';position:absolute;top:16px;left:55%;width:90%;height:2px;background:var(--bd)}
+.step:last-child::after{display:none}
+.step-d{width:32px;height:32px;border-radius:50%;background:var(--bd);display:flex;align-items:center;justify-content:center;margin:0 auto var(--2);font-size:var(--fss);font-weight:700;color:#fff;position:relative;z-index:1}
+.step.act .step-d{background:var(--p500)}
+.step.done .step-d{background:var(--o500)}
+.step.done::after{background:var(--o300)}
+.step.act::after{background:var(--p300)}
+.step-l{font-size:var(--fsx);color:var(--t3);font-weight:500}
+
+/* ═════════════════════ HOME ═════════════════════ */
+.hero-card{position:relative;border-radius:var(--rx);background:linear-gradient(135deg,var(--o700),var(--o800),var(--o900));padding:var(--8) var(--6);margin-bottom:var(--5);overflow:hidden;color:var(--ti);box-shadow:var(--x4)}
+.hero-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(196,112,90,.15),transparent 60%),radial-gradient(circle at 80% 70%,rgba(212,145,92,.12),transparent 50%),radial-gradient(circle at 50% 90%,rgba(53,127,125,.2),transparent 50%)}
+.hero-card::after{content:'';position:absolute;top:-60px;right:-40px;width:160px;height:160px;border-radius:50%;border:2px solid rgba(255,255,255,.08)}
+.hero-orn{position:absolute;top:24px;right:24px;width:60px;height:60px;border-radius:50%;border:2px solid rgba(255,255,255,.12)}
+.hero-orn::before{content:'';position:absolute;inset:8px;border-radius:50%;border:1.5px solid rgba(255,255,255,.1)}
+.hero-orn::after{content:'';position:absolute;top:50%;left:50%;width:8px;height:8px;border-radius:50%;background:var(--a400);transform:translate(-50%,-50%)}
+.hc{position:relative;z-index:1}
+.h-eyebrow{font-size:var(--fsx);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--a300);margin-bottom:var(--3);display:inline-block;padding:var(--1) var(--3);background:rgba(255,255,255,.1);border-radius:var(--rf)}
+.h-title{font-family:var(--ff);font-size:var(--fs4xl);font-weight:900;line-height:1.2;margin-bottom:var(--3);letter-spacing:-.01em}
+.h-title span{display:block}
+.h-desc{font-size:var(--fss);color:rgba(255,255,255,.7);line-height:1.75;margin-bottom:var(--6);max-width:32ch}
+.h-stats{display:flex;gap:var(--5)}
+.h-stat{display:flex;flex-direction:column}
+.h-stat-n{font-size:var(--fs2xl);font-family:var(--ff);font-weight:900}
+.h-stat-l{font-size:var(--fsx);color:rgba(255,255,255,.55);margin-top:2px}
+
+.search-bar{display:flex;align-items:center;gap:var(--2);background:var(--sur);border-radius:var(--rx);padding:var(--1);box-shadow:var(--x2);border:1.5px solid var(--bd);margin-bottom:var(--5);transition:all var(--dn) var(--ex)}
+.search-bar:focus-within{border-color:var(--p400);box-shadow:var(--x3),0 0 0 3px rgba(196,112,90,.1)}
+.s-icon{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--p500);border-radius:var(--rl)}
+.s-inp{flex:1;min-width:0;height:40px;padding:0;font-size:var(--fsb);color:var(--tx);background:transparent;border:none;outline:none}
+.s-inp::placeholder{color:var(--t3)}
+.s-sub{flex-shrink:0;height:36px;padding:0 var(--5);background:var(--p500);color:#fff;font-size:var(--fss);font-weight:600;border-radius:var(--rl);transition:all var(--df) var(--ex);display:flex;align-items:center;gap:var(--1)}
+.s-sub:active{background:var(--p600);transform:scale(.97)}
+
+/* Today recommendation */
+.today-section{margin-bottom:var(--5)}
+.today-hd{display:flex;align-items:center;gap:var(--2);margin-bottom:var(--3)}
+.today-hd .dot{width:8px;height:8px;border-radius:50%;background:var(--p500);animation:mapPulse 2s var(--ex) infinite}
+@keyframes mapPulse{0%,100%{box-shadow:0 0 0 4px rgba(196,112,90,.2)}50%{box-shadow:0 0 0 8px rgba(196,112,90,.05)}}
+.today-hd h3{font-size:var(--fsl);font-family:var(--ff);font-weight:900}
+.today-card{background:var(--sur);border-radius:var(--rx);overflow:hidden;box-shadow:var(--x2);border:1px solid var(--bd);margin-bottom:var(--3);cursor:pointer;transition:all var(--dn)}
+.today-card:active{transform:scale(.98);background:var(--shv)}
+.today-img{height:120px;background:linear-gradient(135deg,var(--o100),var(--o200));display:flex;align-items:center;justify-content:center}
+.today-body{padding:var(--4)}
+.today-body h4{font-size:var(--fsb);font-weight:700;margin-bottom:var(--1)}
+.today-body p{font-size:var(--fss);color:var(--t2);line-height:1.5}
+
+.task-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--2);margin-bottom:var(--5)}.task-grid .g-card{text-align:center;padding:var(--5) var(--4)}.task-grid .g-ic{font-size:32px}
+
+.sect-label{font-size:var(--fss);font-weight:700;color:var(--t2);margin-bottom:var(--3);display:flex;align-items:center;gap:var(--2)}
+.sect-label::after{content:'';flex:1;height:1px;background:var(--bd)}
+
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--2);margin-bottom:var(--5)}
+.svc-tile{position:relative;display:flex;flex-direction:column;align-items:center;gap:var(--2);padding:var(--4) var(--2);border-radius:var(--rl);background:var(--sur);border:1.5px solid var(--bd);text-align:center;transition:all var(--dn) var(--ex);cursor:pointer;min-height:110px;justify-content:center}
+.svc-tile:active{transform:scale(.96);background:var(--shv)}
+.svc-tile.active{border-color:var(--p500);background:var(--p50);box-shadow:0 0 0 3px rgba(196,112,90,.08)}
+.svc-ic{width:40px;height:40px;border-radius:var(--rm);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;flex-shrink:0}
+.svc-l{font-size:var(--fss);font-weight:700;color:var(--tx);line-height:1.2}
+.svc-u{font-size:var(--fsx);color:var(--t3);line-height:1.3}
+
+/* ═════════════════════ ASK ═════════════════════ */
+.chat-box{display:flex;flex-direction:column;gap:var(--3);margin-bottom:var(--5);min-height:200px}
+.chat-bub{max-width:82%;padding:var(--3) var(--4);border-radius:var(--rx);font-size:var(--fss);line-height:1.75;animation:bubIn var(--dn) var(--ex)}
+@keyframes bubIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.chat-bub.user{align-self:flex-end;background:var(--p500);color:#fff;border-bottom-right-radius:var(--rs)}
+.chat-bub.bot{align-self:flex-start;background:var(--sur);border:1px solid var(--bd);border-bottom-left-radius:var(--rs);box-shadow:var(--x1)}
+.chat-bub.bot strong{display:block;margin-bottom:var(--1);color:var(--o600);font-size:var(--fsx);font-weight:700}
+.p-chips{display:flex;flex-wrap:wrap;gap:var(--2);margin-bottom:var(--3)}
+.p-chip{padding:var(--2) var(--4);font-size:var(--fss);font-weight:500;border-radius:var(--rf);background:var(--sur);border:1px solid var(--bd);color:var(--t2);transition:all var(--df)}
+.p-chip:nth-child(1){border-color:var(--p300);background:var(--p50);color:var(--p700)}
+.p-chip:active{background:var(--shv);transform:scale(.97)}
+
+/* ASK RESULT */
+.ask-result .ai-answer{background:var(--sur);border-radius:var(--rx);padding:var(--5);border:1px solid var(--bd);margin-bottom:var(--3)}
+.ask-result .ai-badge{display:inline-flex;align-items:center;gap:var(--1);padding:var(--1) var(--3);background:var(--o50);border-radius:var(--rf);font-size:var(--fsx);font-weight:700;color:var(--o700);margin-bottom:var(--3)}
+.ask-result .ai-text{font-size:var(--fsb);line-height:1.75;color:var(--tx);margin-bottom:var(--3)}
+.ask-result .source-list{display:flex;flex-direction:column;gap:var(--2)}
+.ask-result .source-item{display:flex;align-items:center;gap:var(--3);padding:var(--3);background:var(--shv);border-radius:var(--rl);border:1px solid var(--bd);cursor:pointer;transition:all var(--df)}
+.ask-result .source-item:active{background:var(--o50);border-color:var(--o200)}
+.ask-result .source-num{width:28px;height:28px;border-radius:50%;background:var(--o600);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--fsx);font-weight:700;flex-shrink:0}
+.permission-flag{display:flex;align-items:center;gap:var(--2);padding:var(--3);background:var(--a50);border-radius:var(--rl);border:1px solid var(--a200);margin-top:var(--3)}
+.permission-flag .s-icon{color:var(--a600)}
+
+/* ═════════════════════ MEMORY ═════════════════════ */
+.photo-card{display:flex;gap:var(--4);background:var(--sur);border-radius:var(--rx);padding:var(--4);border:1px solid var(--bd);box-shadow:var(--x1);cursor:pointer;transition:all var(--dn);margin-bottom:var(--3)}
+.photo-card:active{background:var(--shv);transform:scale(.98)}
+.photo-th{width:80px;height:80px;border-radius:var(--rm);flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.photo-info{flex:1}
+.photo-info h4{font-size:var(--fsb);font-weight:700;margin-bottom:var(--1)}
+.photo-info p{font-size:var(--fss);color:var(--t2);line-height:1.6}
+
+.poster{background:linear-gradient(135deg,var(--p50),var(--a50),var(--o50));border-radius:var(--r2);padding:var(--8);text-align:center;margin-bottom:var(--4);position:relative;overflow:hidden;border:2px solid var(--p100)}
+.poster::before{content:'';position:absolute;inset:12px;border:1px solid rgba(196,112,90,.1);border-radius:var(--rx)}
+.poster-yr{font-size:clamp(3rem,10vw,5rem);font-family:var(--ff);font-weight:900;color:var(--p500);line-height:1}
+.poster-ti{font-size:var(--fsxl);font-weight:700;color:var(--tx);margin:var(--4) 0 var(--2)}
+.poster-su{font-size:var(--fss);color:var(--t2);margin-bottom:var(--4)}
+.poster-wm{font-size:var(--fsx);color:var(--t3)}
+
+.claim-options{display:flex;gap:var(--2);margin-top:var(--3)}
+.claim-opt{flex:1;padding:var(--3);text-align:center;border-radius:var(--rl);border:1.5px solid var(--bd);font-size:var(--fss);font-weight:600;cursor:pointer;transition:all var(--df)}
+.claim-opt:active{transform:scale(.97)}
+.claim-opt.sure{border-color:var(--o400);background:var(--o50);color:var(--o700)}
+.claim-opt.unsure{border-color:var(--a400);background:var(--a50);color:var(--a700)}
+.claim-opt.clue{border-color:var(--bd);background:var(--shv);color:var(--t2)}
+
+/* ═════════════════════ MAP / CITY ═════════════════════ */
+.map-area{background:var(--sur);border-radius:var(--rx);overflow:hidden;margin-bottom:var(--4);box-shadow:var(--x2);border:1px solid var(--bd)}
+.map-canvas{position:relative;min-height:220px;background:linear-gradient(90deg,transparent 0 31px,rgba(47,74,83,.06) 32px,transparent 33px),linear-gradient(transparent 0 31px,rgba(47,74,83,.06) 32px,transparent 33px),var(--o50);background-size:64px 64px;overflow:hidden}
+.map-wm{position:absolute;right:12px;bottom:12px;font-size:28px;font-family:var(--ff);font-weight:900;color:var(--o300);opacity:.3;pointer-events:none}
+.map-dot{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--p500);box-shadow:0 0 0 6px rgba(196,112,90,.2);animation:mapPulse 2.5s var(--ex) infinite;pointer-events:none}
+.mda{left:48px;top:60px}.mdb{right:64px;top:112px;animation-delay:.8s}.mdc{left:156px;bottom:54px;animation-delay:1.6s}
+.map-line{position:absolute;height:2px;background:var(--o500);opacity:.35;transform-origin:left center;pointer-events:none}
+.mla{left:72px;top:72px;width:192px;transform:rotate(15deg)}.mlb{left:180px;top:178px;width:160px;transform:rotate(-24deg)}
+.route-chips{display:flex;gap:var(--2);padding:var(--3) var(--4);overflow-x:auto;scrollbar-width:none}
+.route-chips::-webkit-scrollbar{display:none}
+.r-chip{flex-shrink:0;padding:var(--2) var(--4);font-size:var(--fss);font-weight:600;border-radius:var(--rf);background:var(--shv);border:1px solid var(--bd);color:var(--t2);transition:all var(--df)}
+.r-chip.act{background:var(--o600);color:#fff;border-color:var(--o600)}
+
+.ar-frame{position:relative;min-height:200px;background:linear-gradient(135deg,var(--o800),var(--o900));display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;border-radius:var(--rx)}
+.ar-frame::before{content:'';position:absolute;inset:20px;border:2px solid rgba(255,255,255,.12);border-radius:var(--rm)}
+.ar-scan{position:absolute;left:20px;right:20px;height:1.5px;background:var(--a400);box-shadow:0 0 12px rgba(212,145,92,.6);animation:arScan 3s ease-in-out infinite}
+@keyframes arScan{0%,100%{top:28px}50%{top:calc(100% - 28px)}}
+.ar-badge{color:#fff;font-size:var(--fsx);font-weight:700;background:rgba(255,255,255,.15);padding:var(--1) var(--3);border-radius:var(--rf);margin-bottom:var(--2);position:relative;z-index:1}
+.ar-ti{color:#fff;font-size:var(--fsl);font-weight:700;position:relative;z-index:1}
+.ar-yr{color:var(--a300);font-size:var(--fss);font-weight:600;position:relative;z-index:1;margin-top:var(--2)}
+
+/* ═════════════════════ AR HISTORY OVERLAY ═════════════════════ */
+.history-overlay{position:relative}
+.history-overlay .layer{position:relative;border-radius:var(--rx);overflow:hidden;margin-bottom:var(--2);height:120px;display:flex;align-items:flex-end;padding:var(--3);color:#fff;font-weight:700;font-size:var(--fss)}
+.history-overlay .layer-1920{background:linear-gradient(135deg,#8c4637,#a85a48)}
+.history-overlay .layer-1950{background:linear-gradient(135deg,#2c6e6d,#4d9a98)}
+.history-overlay .layer-1980{background:linear-gradient(135deg,#d4915c,#e8a85f)}
+.history-overlay .layer-2020{background:linear-gradient(135deg,#6b7db3,#8a9ed4)}
+
+/* ═════════════════════ NAVIGATION ═════════════════════ */
+.nav-point{display:flex;align-items:center;gap:var(--3);padding:var(--3);background:var(--sur);border-radius:var(--rl);border:1px solid var(--bd);margin-bottom:var(--2)}
+.nav-point .dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:var(--fss);flex-shrink:0}
+.nav-info{flex:1}
+.nav-info h4{font-size:var(--fss);font-weight:700}
+.nav-info p{font-size:var(--fsx);color:var(--t2)}
+
+/* ═════════════════════ PERMISSIONS ═════════════════════ */
+.perm-panel{background:var(--sur);border-radius:var(--rx);padding:var(--5);border:1px solid var(--bd);box-shadow:var(--x2)}
+.perm-opts{display:flex;gap:var(--2);margin-bottom:var(--3)}
+.perm-opt{flex:1;padding:var(--3) var(--2);font-size:var(--fss);font-weight:600;border-radius:var(--rl);border:1.5px solid var(--bd);background:var(--shv);color:var(--t2);text-align:center;transition:all var(--df)}
+.perm-opt.act{background:var(--p500);color:#fff;border-color:var(--p500);box-shadow:0 2px 8px rgba(196,112,90,.25)}
+.perm-opt:active{transform:scale(.97)}
+.perm-detail{background:var(--shv);border-radius:var(--rl);padding:var(--4);margin-top:var(--3)}
+.perm-detail h4{font-size:var(--fss);font-weight:700;margin-bottom:var(--1)}
+
+/* ═════════════════════ BOTTOM NAV ═════════════════════ */
+.bottom-nav{position:fixed;bottom:0;left:50%;z-index:150;display:flex;width:min(100vw,var(--mw));transform:translateX(-50%);background:rgba(255,255,255,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:1px solid rgba(232,227,221,.8);padding-bottom:var(--sb)}
+.nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:var(--2) var(--1);min-height:var(--nav);color:var(--t3);font-size:var(--fsx);font-weight:500;transition:all var(--df) var(--ex);position:relative}
+.nav-tab .icon{font-size:22px;transition:all var(--df) var(--ex)}
+.nav-tab.act{color:var(--p600)}
+.nav-tab.act .icon{transform:translateY(-2px)}
+.nav-tab.act::before{content:'';position:absolute;top:0;left:25%;right:25%;height:2.5px;background:var(--p500);border-radius:0 0 var(--rf) var(--rf)}
+
+/* ═════════════════════ MODAL / TOAST ═════════════════════ */
+.overlay{position:fixed;inset:0;z-index:300;background:rgba(28,24,20,.4);display:flex;align-items:center;justify-content:center;padding:var(--6);opacity:0;visibility:hidden;transition:all var(--dn) var(--ex);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.overlay.open{opacity:1;visibility:visible}
+.modal{background:var(--sur);border-radius:var(--r2);padding:var(--8);max-width:360px;width:100%;box-shadow:var(--x4);transform:translateY(16px) scale(.96);transition:all var(--dn) var(--esp)}
+.overlay.open .modal{transform:translateY(0) scale(1)}
+.modal h2{font-size:var(--fsxl);font-family:var(--ff);font-weight:900;margin-bottom:var(--3)}
+.modal p{font-size:var(--fss);color:var(--t2);line-height:1.75;margin-bottom:var(--5)}
+.toast{position:fixed;bottom:calc(var(--nav) + var(--4) + var(--sb));left:50%;transform:translateX(-50%) translateY(100px);z-index:250;background:var(--tx);color:var(--ti);padding:var(--3) var(--5);border-radius:var(--rf);font-size:var(--fss);font-weight:600;box-shadow:var(--x4);opacity:0;transition:all var(--dn) var(--ex);white-space:nowrap;display:flex;align-items:center;gap:var(--2);pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast--ok{background:var(--ok)}
+.toast--err{background:var(--err)}
+
+/* ═════════════════════ GENERATING ANIMATION ═════════════════════ */
+.gen-steps{display:flex;flex-direction:column;gap:var(--3);padding:var(--8) 0}
+.gen-step{display:flex;align-items:center;gap:var(--3);opacity:.3;transition:opacity var(--dn)}
+.gen-step.active{opacity:1}
+.gen-step .spin{width:24px;height:24px;border-radius:50%;border:2px solid var(--bd);border-top-color:var(--p500);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.gen-step.done .spin{border-color:var(--ok);border-top-color:var(--ok);animation:none}
+.gen-step.done .spin::after{content:'✓';color:var(--ok);font-weight:700;font-size:14px}
+.gen-step .step-text{font-size:var(--fss);color:var(--t2)}
+.gen-step.active .step-text{color:var(--tx);font-weight:600}
+
+/* ═════════════════════ STUDY DIALOGUE ═════════════════════ */
+.dialogue-role{display:flex;align-items:center;gap:var(--3);padding:var(--3) var(--4);background:var(--o50);border-radius:var(--rf);border:1px solid var(--o100);margin-bottom:var(--3)}
+.dialogue-role .avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+.dialogue-msg{padding:var(--3) var(--4);border-radius:var(--rx);font-size:var(--fss);line-height:1.75;margin-bottom:var(--3);max-width:85%}
+.dialogue-msg.npc{align-self:flex-start;background:var(--sur);border:1px solid var(--bd);margin-right:auto}
+.dialogue-msg.player{align-self:flex-end;background:var(--p500);color:#fff;margin-left:auto}
+
+/* ═════════════════════ ANCESTRY GRAPH ═════════════════════ */
+.graph-node{text-align:center}
+.graph-person{display:inline-flex;flex-direction:column;align-items:center;padding:var(--3) var(--4);background:var(--sur);border:2px solid var(--o300);border-radius:var(--rl);min-width:100px}
+.graph-person .name{font-weight:700;font-size:var(--fss)}
+.graph-person .relation{font-size:var(--fsx);color:var(--t2)}
+.graph-line{height:24px;width:2px;background:var(--o300);margin:0 auto}
+.graph-branch{display:flex;justify-content:center;gap:var(--8);position:relative}
+.graph-branch::before{content:'';position:absolute;top:0;left:25%;right:25%;height:2px;background:var(--o300)}
+
+/* ═════════════════════ CERTIFICATE ═════════════════════ */
+.certificate{background:linear-gradient(135deg,#fdf5f2,#fefaf3,#eef7f7);border:3px double var(--p300);border-radius:var(--r2);padding:var(--8);text-align:center;position:relative;overflow:hidden}
+.certificate::before{content:'';position:absolute;inset:16px;border:1px solid rgba(196,112,90,.15);border-radius:var(--rx)}
+.cert-seal{width:80px;height:80px;border-radius:50%;border:3px solid var(--p500);margin:0 auto var(--3);display:flex;align-items:center;justify-content:center;font-family:var(--ff);font-weight:900;color:var(--p500);font-size:var(--fss)}
+
+/* ═════════════════════ STATUS LIST ═════════════════════ */
+.status-row{display:flex;align-items:center;justify-content:space-between;padding:var(--3) var(--4);background:var(--sur);border-radius:var(--rl);border:1px solid var(--bd);margin-bottom:var(--2)}
+.status-row .s-label{font-size:var(--fss);font-weight:600}
+
+/* ═════════════════════ EMPTY STATE ═════════════════════ */
+.empty-state{padding:var(--12) var(--6);text-align:center}
+.empty-state .icon{font-size:48px;color:var(--t3);margin-bottom:var(--3)}
+.empty-state h3{font-size:var(--fsl);font-weight:700;margin-bottom:var(--2)}
+.empty-state p{font-size:var(--fss);color:var(--t3);line-height:1.6}
+
+/* ═════════════════════ FILTER BAR ═════════════════════ */
+.filter-bar{display:flex;gap:var(--2);overflow-x:auto;padding-bottom:var(--3);margin-bottom:var(--3);scrollbar-width:none}
+.filter-bar::-webkit-scrollbar{display:none}
+.f-chip{flex-shrink:0;padding:var(--2) var(--4);border-radius:var(--rf);font-size:var(--fsx);font-weight:600;background:var(--shv);border:1px solid var(--bd);transition:all var(--df)}
+.f-chip.act{background:var(--p500);color:#fff;border-color:var(--p500)}
+
+/* ═════════════════════ REDUCED MOTION ═════════════════════ */
+/* Missing classes from feedback */
+.profile-card{display:flex;gap:var(--4);background:var(--sur);border-radius:var(--rx);padding:var(--5);border:1px solid var(--bd);box-shadow:var(--x2);margin-bottom:var(--4);align-items:center}
+.avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--o400),var(--o600));display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:700;flex-shrink:0}
+.tag-list{display:flex;flex-wrap:wrap;gap:var(--2)}
+/* 示意数据 badge */
+.s-demo{padding:var(--1) var(--3);font-size:var(--fsx);font-weight:600;border-radius:var(--rf);background:#fef3c7;color:#92400e;border:1px solid #fde68a},"s
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media(max-width:360px){.service-grid{grid-template-columns:repeat(2,1fr)}.h-title{font-size:var(--fs3xl)}.h-stats{flex-wrap:wrap;gap:var(--3)}}
+</style>
+</head>
+<body>
+<div class="app-shell" id="appShell">
+<header class="app-header">
+<div class="hd-l"><div class="hd-lo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="hd-t"><span class="hd-s">厦门市档案馆</span><span class="hd-ti">鹭岛记忆</span></div></div>
+<button class="btn-gh" data-open="privacy">隐私说明</button>
+</header>
+
+<div class="pages-container" id="pagesContainer">
+
+<!-- ═══════ HOME (任务型首页) ═══════ -->
+<section class="stack-page active" data-page="home" id="page-home">
+<div class="hero-card"><div class="hero-orn"></div><div class="hc"><div class="h-eyebrow">公众智慧服务入口</div><h2 class="h-title"><span>查档、走读、共建</span><span>一部手机完成</span></h2><p class="h-desc">面向 528 万常住人口、年度 1 亿人次游客、海内外侨胞台胞</p><div class="h-stats"><div class="h-stat"><span class="h-stat-n">6</span><span class="h-stat-l">大服务板块</span></div><div class="h-stat"><span class="h-stat-n">100<small style="font-size:.5em">+</small></span><span class="h-stat-l">年档案沉淀</span></div><div class="h-stat"><span class="h-stat-n">AI</span><span class="h-stat-l">智能检索</span></div></div></div></div>
+
+<!-- 【修改1】今日推荐 -->
+<div class="today-section">
+<div class="today-hd"><span class="dot"></span><h3>今日推荐</h3></div>
+<div class="today-card" data-push="archive-detail">
+<div class="today-img"><span class="material-symbols-rounded" style="font-size:48px;color:var(--o600);opacity:.4">today</span></div>
+<div class="today-body"><h4>📰 今日厦门记忆：1981 年特区建设档案</h4><p>厦门经济特区获批成立的第一批审批文件，含珍贵手稿与历史照片</p></div>
+</div>
+<div class="today-card" data-push="route-detail">
+<div class="today-img" style="background:linear-gradient(135deg,var(--p100),var(--a100))"><span class="material-symbols-rounded" style="font-size:48px;color:var(--p500);opacity:.4">route</span></div>
+<div class="today-body"><h4>🗺️ 推荐路线：中山路骑楼记忆路线</h4><p>4 个点位 · 步行约 1.5 小时 · AI 语音导览</p></div>
+</div>
+<div class="today-card" data-push="photo-list">
+<div class="today-img" style="background:linear-gradient(135deg,var(--a100),var(--p100))"><span class="material-symbols-rounded" style="font-size:48px;color:var(--a500);opacity:.4">photo_library</span></div>
+<div class="today-body"><h4>🖼️ 待认领老照片：厦港街区 12 张</h4><p>1970-1990 年代厦港避风坞、沙坡尾一带的历史影像</p></div>
+</div>
+</div>
+
+<div class="search-bar" role="search"><span class="s-icon material-symbols-rounded">search</span><input class="s-inp" type="search" placeholder="搜索年份、地名、事件..." value="1980 年代厦门港老照片" id="globalQuery"/><button class="s-sub" data-push="search-results"><span class="material-symbols-rounded" style="font-size:18px">arrow_forward</span>查档</button></div>
+
+<!-- 【修改1】三类任务入口 -->
+<div class="sect-label">高频入口</div>
+<div class="task-grid">
+<div class="g-card" data-push="ask"><span class="g-ic material-symbols-rounded" style="color:var(--p500)">search</span><div class="g-ti">我要查档案</div><div class="g-su">AI 智能问答·语音·以图搜档</div></div>
+<div class="g-card" data-push="photo-list"><span class="g-ic material-symbols-rounded" style="color:var(--o600)">photo_library</span><div class="g-ti">我想看老照片</div><div class="g-su">按年代·街区·地标浏览</div></div>
+<div class="g-card" data-push="year-card-generating"><span class="g-ic material-symbols-rounded" style="color:var(--a500)">calendar_month</span><div class="g-ti">生成年份记忆卡</div><div class="g-su">输入年份，AI 自动聚合</div></div>
+<div class="g-card" data-push="route-list"><span class="g-ic material-symbols-rounded" style="color:var(--o600)">explore</span><div class="g-ti">城市记忆地图</div><div class="g-su">点位·路线·AR·讲解</div></div>
+</div>
+
+<div class="sect-label">特色服务</div>
+<div class="task-grid">
+<div class="g-card" data-push="roots-form"><span class="g-ic material-symbols-rounded" style="color:var(--p700)">family_history</span><div class="g-ti">两岸人物寻根</div><div class="g-su">亲缘图谱·侨批溯源</div></div>
+<div class="g-card" data-push="photo-claim"><span class="g-ic material-symbols-rounded" style="color:var(--o500)">edit_note</span><div class="g-ti">老照片认领</div><div class="g-su">补充信息·共建记忆</div></div>
+<div class="g-card" data-push="study-list"><span class="g-ic material-symbols-rounded" style="color:#6b7db3">school</span><div class="g-ti">研学任务</div><div class="g-su">剧本闯关·电子徽章</div></div>
+<div class="g-card" data-push="family-memory"><span class="g-ic material-symbols-rounded" style="color:var(--ok)">cloud_upload</span><div class="g-ti">上传家族素材</div><div class="g-su">照片·书信·录音</div></div>
+</div>
+</section>
+
+<!-- ═══════ ASK ═══════ -->
+<section class="stack-page" data-page="ask">
+<div class="sub-hd"><h2>问档案 · AI 智能查档</h2></div>
+<div class="info-card info-card--a" style="margin-bottom:var(--3)"><div style="display:flex;align-items:center;gap:var(--2);margin-bottom:var(--2)"><span class="material-symbols-rounded" style="color:var(--o600)">verified_user</span><span style="font-weight:700;font-size:var(--fss);color:var(--o700)">可信问答 · 来源可溯</span></div><div style="display:flex;flex-wrap:wrap;gap:var(--2)"><span class="tag tag--o">RAG 检索增强</span><span class="tag tag--o">降低幻觉</span><span class="tag tag--o">权限过滤</span></div></div>
+<div class="chat-box" id="chatLog"><div class="chat-bub user">我想看看 1980 年代厦门港的老照片。</div><div class="chat-bub bot"><strong>智能检索</strong>已定位到与「厦门港·1980 年代·影像资料」相关的档案。点击下方查看完整结果。</div></div>
+<div class="p-chips"><button class="p-chip" data-prompt="鼓浪屿老建筑照片">鼓浪屿老建筑照片</button><button class="p-chip" data-prompt="中山路历史影像">中山路历史影像</button><button class="p-chip" data-prompt="侨批与家族线索">侨批与家族线索</button><button class="p-chip" data-prompt="厦门港老码头">厦门港老码头</button></div>
+<button class="btn-pr" data-push="ask-result" style="margin-bottom:var(--3)"><span class="material-symbols-rounded" style="font-size:18px">auto_awesome</span> 查看完整问答结果</button>
+<div style="display:flex;gap:var(--2)"><button class="btn-sm" data-push="voice-search" style="flex:1;justify-content:center"><span class="material-symbols-rounded" style="font-size:16px">mic</span>语音</button><button class="btn-sm" data-push="image-search" style="flex:1;justify-content:center"><span class="material-symbols-rounded" style="font-size:16px">image_search</span>以图搜档</button></div>
+</section>
+
+<!-- ═══════ ASK RESULT (新增 AI问答结果页) ═══════ -->
+<section class="stack-page is-sub" data-page="ask-result">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>问答结果</h2><div class="sub-act"><button class="btn-gh" style="min-width:40px;justify-content:center" id="bookmarkResult"><span class="material-symbols-rounded">bookmark</span></button></div></div>
+<div class="ask-result"><div class="ai-answer"><div class="ai-badge"><span class="material-symbols-rounded" style="font-size:16px">auto_awesome</span>AI 生成 · 可信度：高</div><div class="ai-text">根据馆藏档案，1980 年代厦门港发生了多项重要变化。1984 年厦门经济特区范围扩大到全岛后，港口建设进入快速发展期。东渡港区一期工程于 1982 年开工，1985 年建成 4 个万吨级泊位。同时，沙坡尾避风坞仍然是渔船的主要停泊点。馆藏相关影像资料共 <strong>23 组</strong>。</div><div style="font-size:var(--fsx);color:var(--o600);font-weight:700;margin-bottom:var(--2)">来源依据 3 条</div><div class="source-list"><div class="source-item" data-push="source-trace"><span class="source-num">1</span><div class="lc-bd"><h4 style="font-size:var(--fss)">厦门港港区总体规划 (1983)</h4><p style="font-size:var(--fsx)">xm-gh-1983-0012 · 第 15-18 页</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div><div class="source-item" data-push="source-trace"><span class="source-num">2</span><div class="lc-bd"><h4 style="font-size:var(--fss)">厦门日报经济特区专版 (1985.3)</h4><p style="font-size:var(--fsx)">xm-rb-1985-03-04 · 头版</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div><div class="source-item" data-push="source-trace"><span class="source-num">3</span><div class="lc-bd"><h4 style="font-size:var(--fss)">沙坡尾渔港照片集 (1978-1989)</h4><p style="font-size:var(--fsx)">xm-ph-1978-0056 · 照片 12 帧</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div></div></div>
+<div style="font-size:var(--fss);font-weight:700;margin-bottom:var(--2)">相关档案 8 条</div>
+<div class="list-card" data-push="archive-detail" style="margin-bottom:var(--2)"><div style="width:50px;height:50px;border-radius:var(--rm);background:var(--o100);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-rounded" style="color:var(--o600)">description</span></div><div class="lc-bd"><h4>厦门港建设档案 (1985)</h4><p>公开 · 建设项目</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="archive-detail" style="margin-bottom:var(--2)"><div style="width:50px;height:50px;border-radius:var(--rm);background:var(--p100);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-rounded" style="color:var(--p500)">photo_library</span></div><div class="lc-bd"><h4>沙坡尾避风坞老照片</h4><p>公开 · 影像资料</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="permission-gate" style="margin-bottom:var(--2)"><div style="width:50px;height:50px;border-radius:var(--rm);background:var(--a100);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-rounded" style="color:var(--a600)">lock</span></div><div class="lc-bd"><h4>厦门港务局人事档案 (1984-1986)</h4><p>需实名授权 · 人事档案</p></div><span class="s-badge s-warn">需授权</span></div>
+<div class="permission-flag"><span class="material-symbols-rounded" style="color:var(--a600)">info</span><span style="font-size:var(--fsx);color:var(--a700)">可公开查看 5 条 · 需授权查看 3 条</span></div>
+<button class="btn-sm" data-push="ask-followup" style="width:100%;justify-content:center;margin-top:var(--3)"><span class="material-symbols-rounded" style="font-size:16px">question_answer</span>继续追问</button></div>
+</section>
+
+<!-- ═══════ SOURCE TRACE (新增来源溯源页) ═══════ -->
+<section class="stack-page is-sub" data-page="source-trace">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>档案溯源</h2></div>
+<div class="banner-card"><div style="position:relative;z-index:1"><h3 style="font-size:var(--fsl);font-weight:900;margin-bottom:var(--1)">厦门港港区总体规划 (1983)</h3><p style="font-size:var(--fss);opacity:.8">档号：xm-gh-1983-0012 · 第 15-18 页</p></div></div>
+<div style="background:var(--o50);border-radius:var(--rx);padding:var(--6);border:1px solid var(--bd);margin-bottom:var(--3);min-height:200px;position:relative">
+<div style="line-height:2;font-size:var(--fss);color:var(--tx)">……第三章 港区布局与功能分区<br><br>第 15 页：东渡港区一期工程规划建设四个万吨级深水泊位，分别为：集装箱泊位 1 个、散杂货泊位 2 个、客运泊位 1 个……<br><br><mark style="background:rgba(212,145,92,.3);padding:0 2px;border-radius:2px">东渡港区位于厦门岛西部，北起高崎，南至东渡码头，岸线长度约 3.5 公里</mark>，是厦门港<b>核心港区</b>……<br><br>第 18 页：配套设施包括港区铁路专用线、后方堆场、仓储区以及联检大楼……</div>
+<div style="position:absolute;right:12px;top:12px;background:var(--a400);color:#fff;padding:var(--1) var(--2);border-radius:var(--rs);font-size:var(--fsx);font-weight:700">AI 定位段落</div>
+</div>
+<div class="info-card"><h3>关于此档案</h3><div style="display:grid;grid-template-columns:1fr 2fr;gap:var(--2) var(--4);font-size:var(--fss)"><span style="color:var(--t3)">形成时间</span><span>1983 年 6 月</span><span style="color:var(--t3)">责任者</span><span>厦门市规划局</span><span style="color:var(--t3)">密级</span><span style="color:var(--ok);font-weight:600">公开</span><span style="color:var(--t3)">页数</span><span>42 页</span></div></div>
+</section>
+
+<!-- ═══════ PERMISSION GATE (新增权限拦截页) ═══════ -->
+<section class="stack-page is-sub" data-page="permission-gate">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>权限提示</h2></div>
+<div style="text-align:center;padding:var(--8) 0">
+<div style="width:64px;height:64px;border-radius:50%;background:var(--a50);margin:0 auto var(--3);display:flex;align-items:center;justify-content:center"><span class="material-symbols-rounded" style="font-size:32px;color:var(--a600)">lock</span></div>
+<h3 style="font-size:var(--fsl);font-weight:700;margin-bottom:var(--2)">此档案需要实名授权</h3>
+<p style="font-size:var(--fss);color:var(--t2);line-height:1.75;margin-bottom:var(--4)">厦门港务局人事档案涉及个人信息，根据《档案法》规定，需完成实名认证后方可查阅。您也可以通过提交查档申请由馆员协助处理。</p></div>
+<div class="info-card info-card--a"><h3>两种方式查阅</h3><div style="display:flex;gap:var(--2);margin-top:var(--3)"><button class="btn-pr" data-push="login" style="flex:1">实名认证后查阅</button><button class="btn-ol" data-push="access-apply" style="flex:1;margin-top:0">提交查档申请</button></div></div>
+</section>
+
+<!-- ═══════ ASK FOLLOWUP (新增追问页) ═══════ -->
+<section class="stack-page is-sub" data-page="ask-followup">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>继续追问</h2></div>
+<div class="info-card" style="margin-bottom:var(--3)"><p style="font-size:var(--fss);color:var(--t2);margin-bottom:var(--2)">上一问：我想看看 1980 年代厦门港的老照片。</p><p style="font-size:var(--fss);color:var(--t2)">已找到 23 组相关影像资料</p></div>
+<div class="p-chips"><button class="p-chip" data-prompt="还有同一时期的照片吗">还有同一时期的照片吗</button><button class="p-chip" data-prompt="这些照片里有没有包含人物的">包含人物的照片有哪些</button><button class="p-chip" data-prompt="有没有沙坡尾的老地图">有没有沙坡尾的老地图</button><button class="p-chip" data-prompt="那个时期的港务局负责人是谁">港务局当时的负责人是谁</button></div>
+<div class="chat-box" id="chatLog2"></div>
+</section>
+
+<!-- ═══════ SEARCH RESULTS (增强筛选) ═══════ -->
+<section class="stack-page is-sub" data-page="search-results">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>搜索结果</h2></div>
+<div class="search-bar" style="margin-bottom:var(--3)"><span class="s-icon material-symbols-rounded">search</span><input class="s-inp" type="search" value="厦门港老照片"/></div>
+<div class="filter-bar"><button class="f-chip act">全部 12</button><button class="f-chip">公开 8</button><button class="f-chip">影像 5</button><button class="f-chip">文书 4</button><button class="f-chip">报刊 2</button><button class="f-chip">地图 1</button></div>
+<div class="list-card" data-push="archive-detail"><div style="width:50px;height:50px;border-radius:var(--rm);background:var(--o100);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-rounded" style="color:var(--o600)">description</span></div><div class="lc-bd"><h4>厦门港建设档案 (1985年)</h4><p>码头扩建工程审批文件 · 公开</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="archive-detail"><div style="width:50px;height:50px;border-radius:var(--rm);background:var(--p100);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-rounded" style="color:var(--p500)">photo_library</span></div><div class="lc-bd"><h4>沙坡尾避风坞老照片</h4><p>1950-1980 年间系列影像 · 公开</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="archive-detail"><div style="width:50px;height:50px;border-radius:var(--rm);background:var(--shv);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-rounded" style="color:var(--t2)">article</span></div><div class="lc-bd"><h4>中山路骑楼修缮记录</h4><p>历史建筑保护档案 · 需授权</p></div><span class="s-badge s-warn">需授权</span></div></section>
+
+<!-- ═══════ ARCHIVE DETAIL (增强：原件预览+关联推荐) ═══════ -->
+<section class="stack-page is-sub" data-page="archive-detail">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>档案详情</h2><div class="sub-act"><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">bookmark</span></button><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">share</span></button></div></div>
+<div style="width:100%;height:200px;background:linear-gradient(135deg,var(--o100),var(--o200));border-radius:var(--rx);display:flex;align-items:center;justify-content:center;margin-bottom:var(--4)"><span class="material-symbols-rounded" style="font-size:64px;color:var(--o600);opacity:.4">description</span></div>
+<h2 style="font-size:var(--fsxl);font-weight:900;font-family:var(--ff);margin-bottom:var(--2)">厦门港建设档案 (1985年)</h2>
+<div class="tag-list" style="margin-bottom:var(--4)"><span class="tag">建设项目</span><span class="tag tag--ok">公开</span><span class="tag tag--a">1985年</span></div>
+<div class="info-card" style="margin-bottom:var(--3)"><h3>AI 摘要</h3><p>该档案记录了 1985 年厦门港东渡一期工程的审批与建设过程，涉及四个万吨级泊位的设计文件、施工方案及验收报告。与同年开工的海沧大桥建设形成陆海联动格局。</p></div>
+<div class="info-card" style="margin-bottom:var(--3)"><h3>基础元数据</h3><div style="display:grid;grid-template-columns:1fr 2fr;gap:var(--2) var(--4);font-size:var(--fss)"><span style="color:var(--t3)">档号</span><span>XM-G-1985-0042</span><span style="color:var(--t3)">形成时间</span><span>1985.3 - 1986.12</span><span style="color:var(--t3)">责任者</span><span>厦门港务管理局</span><span style="color:var(--t3)">密级</span><span style="color:var(--ok);font-weight:600">公开</span><span style="color:var(--t3)">关联人物</span><span>林某某（时任局长）</span><span style="color:var(--t3)">关联地点</span><span>东渡港区、沙坡尾</span></div></div>
+<div style="font-size:var(--fss);font-weight:700;margin-bottom:var(--2)">关联推荐</div>
+<div class="list-card"><div class="lc-ic" style="background:var(--o600)"><span class="material-symbols-rounded">description</span></div><div class="lc-bd"><h4>厦门经济特区港口规划 (1984)</h4><p>相关度 92% · 公开</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<button class="btn-pr" id="applyAccess" style="margin-top:var(--3)">申请利用此档案</button>
+</section>
+
+<!-- ═══════ MEMORY ═══════ -->
+<section class="stack-page" data-page="memory">
+<div class="sub-hd"><h2>看厦门</h2></div>
+<div class="grid-2"><div class="g-card" data-push="year-card-generating"><span class="g-ic material-symbols-rounded" style="color:var(--p500)">auto_awesome</span><div class="g-ti">生成年份记忆卡</div><div class="g-su">AI 聚合档案</div></div><div class="g-card" data-push="photo-list"><span class="g-ic material-symbols-rounded" style="color:var(--o600)">photo_library</span><div class="g-ti">浏览老照片</div><div class="g-su">按年代·街区</div></div><div class="g-card" data-push="photo-compare"><span class="g-ic material-symbols-rounded" style="color:var(--a500)">compare</span><div class="g-ti">今昔对比</div><div class="g-su">AI 自动对齐</div></div><div class="g-card" data-push="photo-upload"><span class="g-ic material-symbols-rounded" style="color:var(--ok)">add_photo_alternate</span><div class="g-ti">上传老照片</div><div class="g-su">公众共建</div></div></div>
+<div class="sect-label">待认领老照片</div>
+<div class="photo-card" data-push="photo-claim"><div class="photo-th" style="background:linear-gradient(135deg,var(--p100),var(--a100))"><span class="material-symbols-rounded" style="color:#fff;font-size:36px;opacity:.5">image</span></div><div class="photo-info"><h4>厦港街区老照片</h4><p>疑似 1980 年代厦港避风坞一带</p><span class="s-badge s-pen" style="margin-top:var(--2)">待公众补充</span></div></div>
+<div class="photo-card" data-push="photo-claim"><div class="photo-th" style="background:linear-gradient(135deg,var(--o100),var(--o200))"><span class="material-symbols-rounded" style="color:#fff;font-size:36px;opacity:.5">image</span></div><div class="photo-info"><h4>中山路骑楼老照片</h4><p>需确认拍摄年代与具体位置</p><span class="s-badge s-pen" style="margin-top:var(--2)">待公众补充</span></div></div>
+</section>
+
+<!-- ═══════ YEAR CARD GENERATING (新增生成过程页) ═══════ -->
+<section class="stack-page is-sub" data-page="year-card-generating">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>生成年份记忆卡</h2></div>
+<div class="input-group"><label>请输入年份</label><div class="yf"><input class="inp" type="number" min="1900" max="2026" value="1992" id="yearInput3"/><button class="btn-r" id="startGenerate"><span class="material-symbols-rounded" style="font-size:18px">auto_awesome</span>生成</button></div></div>
+<div class="gen-steps" id="genSteps"><div class="gen-step active" data-step="1"><div class="spin"></div><div class="step-text">AI 正在检索城市大事...</div></div><div class="gen-step" data-step="2"><div class="spin"></div><div class="step-text">聚合老照片与影像资料...</div></div><div class="gen-step" data-step="3"><div class="step-text">检索报刊摘录与文献...</div></div><div class="gen-step" data-step="4"><div class="step-text">整理建设项目记录...</div></div><div class="gen-step" data-step="5"><div class="step-text">梳理文化事件与活动...</div></div></div>
+<button class="btn-pr" data-push="year-card-detail" style="display:none" id="viewYearCard">查看年份记忆卡 →</button>
+</section>
+
+<!-- ═══════ YEAR CARD DETAIL (增强：城市大事时间线) ═══════ -->
+<section class="stack-page is-sub" data-page="year-card-detail">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>年份记忆卡</h2><div class="sub-act"><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">share</span></button><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">download</span></button></div></div>
+<div class="poster" id="yearPoster"><div class="poster-yr">1992</div><div class="poster-ti">厦门记忆</div><div class="poster-su">厦门经济特区成立 11 周年<br/>城市建设与文化生活蓬勃发展</div><div class="poster-wm">厦门市档案馆 · 鹭岛记忆</div></div>
+<div style="font-size:var(--fss);font-weight:700;margin-bottom:var(--2)">城市大事时间线</div>
+<div style="display:flex;flex-direction:column;gap:var(--2);margin-bottom:var(--3)">
+<div class="info-card" style="display:flex;align-items:center;gap:var(--3)"><div style="width:8px;height:8px;border-radius:50%;background:var(--p500);flex-shrink:0"></div><div><h4 style="font-size:var(--fss);font-weight:700">3 月</h4><p>厦门港货物吞吐量首次突破 1000 万吨</p></div></div>
+<div class="info-card" style="display:flex;align-items:center;gap:var(--3)"><div style="width:8px;height:8px;border-radius:50%;background:var(--o600);flex-shrink:0"></div><div><h4 style="font-size:var(--fss);font-weight:700">6 月</h4><p>厦门大桥通车后第一年，日均车流量达 2.5 万辆</p></div></div>
+<div class="info-card" style="display:flex;align-items:center;gap:var(--3)"><div style="width:8px;height:8px;border-radius:50%;background:var(--a500);flex-shrink:0"></div><div><h4 style="font-size:var(--fss);font-weight:700">9 月</h4><p>鼓浪屿历史文化保护规划编制工作启动</p></div></div>
+<div class="info-card" style="display:flex;align-items:center;gap:var(--3)"><div style="width:8px;height:8px;border-radius:50%;background:#6b7db3;flex-shrink:0"></div><div><h4 style="font-size:var(--fss);font-weight:700">12 月</h4><p>首届厦门国际马拉松赛筹备工作会议召开</p></div></div>
+</div>
+<div class="grid-2"><div class="g-card"><span class="g-ic material-symbols-rounded" style="color:var(--p500)">image</span><div class="g-ti">老照片 23 张</div></div><div class="g-card"><span class="g-ic material-symbols-rounded" style="color:var(--o600)">article</span><div class="g-ti">报刊 16 篇</div></div><div class="g-card"><span class="g-ic material-symbols-rounded" style="color:var(--a500)">construction</span><div class="g-ti">建设项目 7 个</div></div><div class="g-card"><span class="g-ic material-symbols-rounded" style="color:#6b7db3">event</span><div class="g-ti">文化事件 12 件</div></div></div>
+</section>
+
+<!-- ═══════ PHOTO LIST (新增老照片列表+筛选) ═══════ -->
+<section class="stack-page is-sub" data-page="photo-list">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>老照片浏览</h2></div>
+<div class="filter-bar"><button class="f-chip act">全部</button><button class="f-chip">1970 年代</button><button class="f-chip">1980 年代</button><button class="f-chip">1990 年代</button><button class="f-chip">厦港街区</button><button class="f-chip">中山路</button><button class="f-chip">鼓浪屿</button></div>
+<div class="sect-label">待认领 12 张</div>
+<div class="photo-card" data-push="photo-claim"><div class="photo-th" style="background:linear-gradient(135deg,var(--p100),var(--a100))"><span class="material-symbols-rounded" style="color:#fff;font-size:36px;opacity:.5">image</span></div><div class="photo-info"><h4>厦港避风坞 (1978)</h4><p>渔船停泊场景 · 待补充地点细节</p><span class="s-badge s-pen" style="margin-top:var(--2)">待补充</span></div></div>
+<div class="photo-card" data-push="photo-claim"><div class="photo-th" style="background:linear-gradient(135deg,var(--o100),var(--o200))"><span class="material-symbols-rounded" style="color:#fff;font-size:36px;opacity:.5">image</span></div><div class="photo-info"><h4>沙坡尾集市 (1983)</h4><p>码头边的鱼市交易场景</p><span class="s-badge s-pen" style="margin-top:var(--2)">待补充</span></div></div>
+<div class="photo-card"><div class="photo-th" style="background:linear-gradient(135deg,var(--a100),var(--p100))"><span class="material-symbols-rounded" style="color:#fff;font-size:36px;opacity:.5">image</span></div><div class="photo-info"><h4>第一码头 (1965)</h4><p>已认领 · 厦门港历史起点</p><span class="s-badge s-ok" style="margin-top:var(--2)">已采纳</span></div></div>
+<div class="photo-card"><div class="photo-th" style="background:linear-gradient(135deg,#e8e3dd,#d5cfc7)"><span class="material-symbols-rounded" style="color:#fff;font-size:36px;opacity:.5">image</span></div><div class="photo-info"><h4>中山路骑楼 (1988)</h4><p>已认领 · 待馆员复核</p><span class="s-badge s-rev" style="margin-top:var(--2)">待复核</span></div></div>
+</section>
+
+<!-- ═══════ PHOTO CLAIM (新增认领详情：确认/不确定/线索) ═══════ -->
+<section class="stack-page is-sub" data-page="photo-claim">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>照片认领</h2></div>
+<div style="width:100%;height:200px;background:linear-gradient(135deg,var(--p100),var(--a100));border-radius:var(--rx);display:flex;align-items:center;justify-content:center;margin-bottom:var(--4)"><span class="material-symbols-rounded" style="font-size:64px;color:var(--p500);opacity:.4">image</span></div>
+<h2 style="font-size:var(--fsxl);font-weight:900;font-family:var(--ff);margin-bottom:var(--2)">厦港避风坞 (1978)</h2>
+<p style="font-size:var(--fss);color:var(--t2);line-height:1.75;margin-bottom:var(--4)">AI 初步识别：疑似 1978 年前后厦港避风坞一带。请帮助补充以下信息。</p>
+<div class="input-group"><label>地点确认</label><input class="inp" placeholder="例如：沙坡尾避风坞东侧"/></div>
+<div class="input-group"><label>人物信息（如知悉）</label><input class="inp" placeholder="画面中的人物身份"/></div>
+<div class="input-group"><label>年代确认</label><input class="inp" type="number" min="1900" max="2026" value="1978"/></div>
+<div class="input-group"><label>事件描述</label><textarea class="inp ta" placeholder="这张照片记录了..."></textarea></div>
+<div class="claim-options"><button class="claim-opt sure" id="claimSure">✓ 我确定</button><button class="claim-opt unsure">? 不太确定</button><button class="claim-opt clue">💡 提供线索</button></div>
+</section>
+
+<!-- ═══════ CLAIM SUCCESS (新增提交成功页) ═══════ -->
+<section class="stack-page is-sub" data-page="claim-success">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>认领提交</h2></div>
+<div style="text-align:center;padding:var(--12) 0">
+<div style="width:72px;height:72px;border-radius:50%;background:var(--ok);margin:0 auto var(--3);display:flex;align-items:center;justify-content:center"><span class="material-symbols-rounded" style="font-size:36px;color:#fff">check</span></div>
+<h3 style="font-size:var(--fsl);font-weight:700;margin-bottom:var(--2)">认领信息已提交</h3><p style="font-size:var(--fss);color:var(--t2);line-height:1.75;margin-bottom:var(--3)">馆员将在 3-5 个工作日内复核</p>
+<div class="info-card" style="text-align:left"><h3>处理状态</h3><div style="display:flex;flex-direction:column;gap:var(--2);margin-top:var(--2)"><div style="display:flex;align-items:center;gap:var(--2)"><span style="color:var(--ok)">●</span><span style="font-size:var(--fss)">已提交 (6/23 18:37)</span></div><div style="display:flex;align-items:center;gap:var(--2);opacity:.4"><span>○</span><span style="font-size:var(--fss)">馆员复核中</span></div><div style="display:flex;align-items:center;gap:var(--2);opacity:.4"><span>○</span><span style="font-size:var(--fss)">已采纳 / 需补充</span></div></div></div>
+<button class="btn-pr" data-push="contributor-center" style="margin-top:var(--3)">查看我的贡献</button></div>
+</section>
+
+<!-- ═══════ CONTRIBUTOR CENTER (新增贡献者中心) ═══════ -->
+<section class="stack-page is-sub" data-page="contributor-center">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>贡献者中心</h2></div>
+<div class="banner-card" style="background:linear-gradient(135deg,var(--ok),var(--o600))"><div style="position:relative;z-index:1"><h3 style="font-size:var(--fsl);font-weight:900;margin-bottom:var(--2)">感谢您的贡献！</h3><div style="display:flex;gap:var(--5)"><div><div style="font-size:var(--fs2xl);font-family:var(--ff);font-weight:900">3</div><div style="font-size:var(--fsx);opacity:.7">条认领</div></div><div><div style="font-size:var(--fs2xl);font-family:var(--ff);font-weight:900">1</div><div style="font-size:var(--fsx);opacity:.7">条已采纳</div></div><div><div style="font-size:var(--fs2xl);font-family:var(--ff);font-weight:900">120</div><div style="font-size:var(--fsx);opacity:.7">积分</div></div></div></div></div>
+<div class="sect-label">认领记录</div>
+<div class="status-row"><span class="s-label">厦港避风坞 (1978)</span><span class="s-badge s-rev">待复核</span></div>
+<div class="status-row"><span class="s-label">沙坡尾集市 (1983)</span><span class="s-badge s-ok">已采纳</span></div>
+<div class="status-row"><span class="s-label">中山路骑楼 (1988)</span><span class="s-badge s-rev">待复核</span></div>
+<button class="btn-pr" data-push="badges" style="margin-top:var(--3)">查看荣誉徽章</button>
+</section>
+
+<!-- ═══════ PHOTO UPLOAD ═══════ -->
+<section class="stack-page is-sub" data-page="photo-upload">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>上传老照片</h2></div>
+<div class="stepper"><div class="step act"><div class="step-d">1</div><div class="step-l">选照片</div></div><div class="step"><div class="step-d">2</div><div class="step-l">填信息</div></div><div class="step"><div class="step-d">3</div><div class="step-l">AI识别</div></div><div class="step"><div class="step-d">4</div><div class="step-l">选授权</div></div></div>
+<div style="border:2px dashed var(--bds);border-radius:var(--rx);padding:var(--8);text-align:center;margin-bottom:var(--4)">
+<span class="material-symbols-rounded" style="font-size:48px;color:var(--t3);margin-bottom:var(--3)">cloud_upload</span>
+<h3 style="font-size:var(--fsb);font-weight:700;margin-bottom:var(--1)">选择老照片</h3><p style="font-size:var(--fss);color:var(--t3)">支持 JPG / PNG，每次最多 10 张</p>
+<p style="font-size:var(--fsx);color:var(--err);margin-top:var(--2)" id="uploadSizeHint" hidden>文件大小不能超过 20MB</p>
+</div>
+<div class="input-group"><label>照片描述</label><textarea class="inp ta" placeholder="时间、地点、人物、事件..."></textarea></div>
+<div class="perm-panel"><h3 style="font-size:var(--fsb);font-weight:700;margin-bottom:var(--3)">选择授权方式</h3><div class="perm-opts"><button class="perm-opt act" data-perm="personal">个人使用</button><button class="perm-opt" data-perm="family">家庭共享</button><button class="perm-opt" data-perm="archive">授权入馆</button></div>
+<div class="perm-detail" id="permDetail"><h4>个人使用</h4><p style="font-size:var(--fss);color:var(--t2)">素材仅保存在您的个人账户中，不会进入馆藏数据库。</p></div>
+</div>
+<button class="btn-pr" id="confirmUploadBtn">确认上传</button>
+</section>
+
+<!-- ═══════ AI RECOGNITION (新增AI识别确认页) ═══════ -->
+<section class="stack-page is-sub" data-page="ai-recognition">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>AI 识别结果</h2></div>
+<div class="info-card info-card--a"><div style="display:flex;align-items:center;gap:var(--2);margin-bottom:var(--3)"><span class="material-symbols-rounded" style="color:var(--o600)">psychology</span><span style="font-weight:700;font-size:var(--fss)">AI 自动识别完成</span></div>
+<div style="display:flex;flex-direction:column;gap:var(--2)"><div class="status-row"><span class="s-label" style="font-size:var(--fss)">时间</span><span>约 1985 年</span><span class="s-badge s-ai">AI 识别</span></div><div class="status-row"><span class="s-label" style="font-size:var(--fss)">地点</span><span>厦门港沙坡尾</span><span class="s-badge s-ai">AI 识别</span></div><div class="status-row"><span class="s-label" style="font-size:var(--fss)">人物</span><span>未识别到人物</span></div><div class="status-row"><span class="s-label" style="font-size:var(--fss)">文字内容</span><span>未检测到文字</span></div></div></div>
+<button class="btn-pr" data-push="user-confirm">确认并补充信息 →</button>
+<button class="btn-ol" style="margin-top:var(--2)">AI 识别有误，我手动填写</button>
+</section>
+
+<!-- ═══════ USER CONFIRM (新增用户补充确认页) ═══════ -->
+<section class="stack-page is-sub" data-page="user-confirm">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>补充确认信息</h2></div>
+<div class="input-group"><label>时间（可修正）</label><div class="yf"><input class="inp" type="number" min="1900" max="2026" value="1985"/></div></div>
+<div class="input-group"><label>地点（可修正）</label><input class="inp" value="厦门港沙坡尾"/></div>
+<div class="input-group"><label>人物信息</label><input class="inp" placeholder="如能识别出人物，请填写"/></div>
+<div class="input-group"><label>补充描述</label><textarea class="inp ta" placeholder="关于这张照片的任何已知信息..."></textarea></div>
+<button class="btn-pr" data-push="auth-confirm">下一步：选择授权</button>
+</section>
+
+<!-- ═══════ AUTH CONFIRM (新增授权确认详解页) ═══════ -->
+<section class="stack-page is-sub" data-page="auth-confirm">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>选择授权</h2></div>
+<div class="perm-panel"><h3 style="font-size:var(--fsb);font-weight:700;margin-bottom:var(--3)">请选择素材授权方式</h3><div class="perm-opts"><button class="perm-opt act" data-perm="personal">个人使用</button><button class="perm-opt" data-perm="family">家庭共享</button><button class="perm-opt" data-perm="archive">授权入馆</button></div>
+<div class="perm-detail" id="authDetail"><h4>个人使用</h4><p style="font-size:var(--fss);color:var(--t2);margin-top:var(--1)">素材仅保存在您的个人账户中，不会进入馆藏数据库，也不会被其他人看到。适合仅作为私人收藏的资料。</p>
+<p style="font-size:var(--fsx);color:var(--t3);margin-top:var(--2)">✓ 完全私密 | ✗ 不计入贡献 | ✗ 不参与馆藏</p></div></div>
+<button class="btn-pr" id="submitWithAuth">确认授权并提交</button>
+</section>
+
+<!-- ═══════ REVIEW STATUS (新增审核状态页) ═══════ -->
+<section class="stack-page is-sub" data-page="review-status">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>审核状态</h2></div>
+<div class="segment"><button class="seg-btn act">全部</button><button class="seg-btn">待审核</button><button class="seg-btn">已采纳</button><button class="seg-btn">需补充</button></div>
+<div class="status-row"><span class="s-label">厦港避风坞照片 (1985)</span><span class="s-badge s-rev">馆员复核中</span></div>
+<div class="status-row"><span class="s-label">家族书信 (1947)</span><span class="s-badge s-ok">已入馆</span></div>
+<div class="status-row"><span class="s-label">侨批扫描件 (1932)</span><span class="s-badge s-warn">需补充信息</span></div>
+</section>
+
+<!-- ═══════ ENTRY CERTIFICATE (新增入馆证书页) ═══════ -->
+<section class="stack-page is-sub" data-page="entry-certificate">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>入馆证书</h2><div class="sub-act"><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">share</span></button><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">download</span></button></div></div>
+<div class="certificate" style="margin-top:var(--4)"><div class="cert-seal">馆藏</div><h3 style="font-size:var(--fsxl);font-family:var(--ff);font-weight:900;margin-bottom:var(--2)">入馆贡献证明</h3><p style="font-size:var(--fss);color:var(--t2);margin-bottom:var(--3)">兹证明 公众用户 提供的「厦港避风坞照片 (1985)」</p><p style="font-size:var(--fss);color:var(--t2);margin-bottom:var(--3)">经厦门市档案馆馆员复核，已正式纳入馆藏档案补充库。</p><div style="margin-top:var(--4)"><p style="font-size:var(--fsx);color:var(--t3)">编号：XM-GC-2026-0042</p><p style="font-size:var(--fsx);color:var(--t3)">厦门市档案馆</p></div></div>
+</section>
+
+<!-- ═══════ ARCHIVE MATCH (新增馆藏关联页) ═══════ -->
+<section class="stack-page is-sub" data-page="archive-match">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>馆藏关联</h2></div>
+<div class="banner-card"><div style="position:relative;z-index:1"><h3 style="font-size:var(--fsl);font-weight:900;margin-bottom:var(--2)">智能匹配</h3><p style="font-size:var(--fss);opacity:.8">系统发现您的素材可能与以下馆藏档案相关</p></div></div>
+<div class="list-card"><span class="material-symbols-rounded" style="color:var(--o600)">link</span><div class="lc-bd"><h4>厦门港历史照片集 (1970-1990)</h4><p>匹配度 89% · 您的照片地点与馆藏一致</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card"><span class="material-symbols-rounded" style="color:var(--p500)">link</span><div class="lc-bd"><h4>沙坡尾渔港档案 (1965-1995)</h4><p>匹配度 76% · 时间范围重叠</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<button class="btn-pr">关联到这些档案</button>
+</section>
+
+<!-- ═══════ CITY ═══════ -->
+<section class="stack-page" data-page="city">
+<div class="sub-hd"><h2>走厦门</h2></div>
+<div class="map-area"><div class="map-canvas"><span class="map-wm">厦金一日</span><span class="map-dot mda"></span><span class="map-dot mdb"></span><span class="map-dot mdc"></span><span class="map-line mla"></span><span class="map-line mlb"></span></div></div>
+<div class="grid-2"><div class="g-card" data-push="route-list"><span class="g-ic material-symbols-rounded" style="color:var(--o600)">map</span><div class="g-ti">记忆路线</div><div class="g-su">码头·街区·宗祠</div></div><div class="g-card" data-push="poi-detail" data-poi="shapowei"><span class="g-ic material-symbols-rounded" style="color:var(--p500)">pin_drop</span><div class="g-ti">附近点位</div><div class="g-su">沙坡尾·鼓浪屿</div></div><div class="g-card" data-push="ar-view"><span class="g-ic material-symbols-rounded" style="color:var(--a500)">view_in_ar</span><div class="g-ti">AR 打卡</div><div class="g-su">实景叠加档案</div></div><div class="g-card" data-push="audio-guide"><span class="g-ic material-symbols-rounded" style="color:#6b7db3">headphones</span><div class="g-ti">AI 讲解</div><div class="g-su">多语种导览</div></div></div>
+</section>
+
+<!-- ═══════ ROUTE LIST ═══════ -->
+<section class="stack-page is-sub" data-page="route-list">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>记忆路线</h2></div>
+<div class="list-card" data-push="route-detail"><div class="lc-ic" style="background:var(--p500)"><span class="material-symbols-rounded">anchor</span></div><div class="lc-bd"><h4>码头记忆路线</h4><p>4 点位 · 步行约 2h · AI 讲解</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card"><div class="lc-ic" style="background:var(--o600)"><span class="material-symbols-rounded">sailing</span></div><div class="lc-bd"><h4>海上交通路线</h4><p>6 点位 · 骑行约 3h</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card"><div class="lc-ic" style="background:var(--a500)"><span class="material-symbols-rounded">temple_buddhist</span></div><div class="lc-bd"><h4>宗亲往来路线</h4><p>5 点位 · 步行约 2.5h</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+</section>
+
+<!-- ═══════ ROUTE DETAIL ═══════ -->
+<section class="stack-page is-sub" data-page="route-detail">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>码头记忆路线</h2><div class="sub-act"><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">share</span></button></div></div>
+<div class="map-area"><div class="map-canvas" style="min-height:240px"><span class="map-wm">码头记忆</span><span class="map-dot mda"></span><span class="map-dot mdb"></span><span class="map-dot mdc"></span><span class="map-line mla"></span><span class="map-line mlb"></span></div></div>
+<div style="display:flex;gap:var(--2);margin-bottom:var(--3);flex-wrap:wrap"><span class="s-badge s-ok">4 点位</span><span class="s-badge s-rev">约 2h</span><span class="s-badge s-ai">AI 讲解</span><span class="s-badge s-ok">适合老人</span><span class="s-badge s-ok">亲子友好</span></div>
+<div class="nav-point" style="border-color:var(--p300);background:var(--p50)" data-push="poi-detail"><div class="dot" style="background:var(--p500)">1</div><div class="nav-info"><h4>沙坡尾避风坞</h4><p>始建于明代 · 距起点 0m</p></div><span class="s-badge s-ok">已打卡</span></div>
+<div class="nav-point"><div class="dot" style="background:var(--o600)">2</div><div class="nav-info"><h4>厦门第一码头</h4><p>1937 年建成 · 步行 15min</p></div><span style="font-size:var(--fsx);color:var(--t3)">下一站</span></div>
+<div class="nav-point"><div class="dot" style="background:var(--a500)">3</div><div class="nav-info"><h4>和平码头</h4><p>近代对外交通枢纽 · 步行 20min</p></div></div>
+<div class="nav-point"><div class="dot" style="background:var(--p700)">4</div><div class="nav-info"><h4>东渡邮轮码头</h4><p>现代港口新地标 · 步行 25min</p></div></div>
+<button class="btn-pr" data-push="route-navigate" style="margin-top:var(--3)"><span class="material-symbols-rounded" style="font-size:18px">navigation</span> 开始导航</button>
+<button class="btn-ol" data-push="audio-guide"><span class="material-symbols-rounded" style="font-size:18px">headphones</span> 语音导览</button>
+</section>
+
+<!-- ═══════ ROUTE NAVIGATE (新增路线导航页) ═══════ -->
+<section class="stack-page is-sub" data-page="route-navigate">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>路线导航</h2></div>
+<div class="map-area"><div class="map-canvas" style="min-height:300px"><span class="map-wm">导航中</span><span class="map-dot mda"></span><span class="map-dot mdb"></span><span class="map-line mla"></span></div></div>
+<div class="info-card info-card--a" style="text-align:center;margin-top:var(--3)"><h3>第 1 / 4 站</h3><p style="font-size:var(--fsl);font-weight:700;color:var(--tx);margin:var(--2) 0">沙坡尾避风坞</p><div style="display:flex;gap:var(--4);justify-content:center;margin:var(--3) 0"><div><span style="font-size:var(--fsx);color:var(--t3)">下一站</span><div style="font-weight:700">步行 15 分钟</div></div><div><span style="font-size:var(--fsx);color:var(--t3)">总路程</span><div style="font-weight:700">约 2 小时</div></div></div></div>
+<div style="display:flex;gap:var(--2)"><button class="btn-sm" data-push="poi-detail" style="flex:1;justify-content:center">点位详情</button><button class="btn-sm" data-push="audio-guide" style="flex:1;justify-content:center">语音讲解</button><button class="btn-sm" data-push="ar-view" style="flex:1;justify-content:center">AR 打卡</button></div>
+</section>
+
+<!-- ═══════ POI DETAIL (新增点位详情页) ═══════ -->
+<section class="stack-page is-sub" data-page="poi-detail">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>沙坡尾避风坞</h2><div class="sub-act"><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">bookmark</span></button></div></div>
+<div style="width:100%;height:180px;background:linear-gradient(135deg,var(--o100),var(--a100));border-radius:var(--rx);display:flex;align-items:center;justify-content:center;margin-bottom:var(--4)"><span class="material-symbols-rounded" style="font-size:64px;color:var(--o600);opacity:.4">anchor</span></div>
+<div class="tag-list" style="margin-bottom:var(--3)"><span class="tag tag--a">明代至今</span><span class="tag">渔港</span><span class="tag tag--o">第一码头路线</span></div>
+<div class="info-card" style="margin-bottom:var(--3)"><h3>档案故事</h3><p>沙坡尾是厦门港的起源地之一，早在明代就是渔船的避风良港。清初逐渐成为对外贸易口岸。1980 年代经济特区成立后，传统渔业与现代港口并行发展。至今仍有木质渔船停泊，被称为"厦门最后的渔港"。</p></div>
+<div class="info-card" style="margin-bottom:var(--3)"><h3>关联档案</h3><div class="list-card" style="margin-bottom:0;margin-top:var(--2)" data-push="archive-detail"><span class="material-symbols-rounded" style="color:var(--o600)">description</span><div class="lc-bd"><h4 style="font-size:var(--fss)">沙坡尾渔港照片集 (1978-1989)</h4><p>影像资料 · 公开</p></div></div></div>
+<div style="display:flex;gap:var(--2)"><button class="btn-sm" data-push="audio-guide" style="flex:1;justify-content:center">🎤 语音讲解</button><button class="btn-sm" data-push="ar-view" style="flex:1;justify-content:center">📸 AR 打卡</button></div>
+</section>
+
+<!-- ═══════ AR VIEW ═══════ -->
+<section class="stack-page is-sub" data-page="ar-view">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>AR 实景</h2></div>
+<div class="ar-frame" style="min-height:300px;margin-bottom:var(--3)"><span class="ar-scan"></span><span class="ar-badge">对准历史地标</span><span class="ar-ti">识别中...</span><span class="ar-yr">移到沙坡尾避风坞附近</span></div>
+<button class="btn-pr" data-push="ar-result" style="margin-bottom:var(--3)">模拟识别成功 →</button>
+<div style="display:flex;gap:var(--2)"><button class="btn-sm" style="flex:1;justify-content:center">📸 拍照打卡</button><button class="btn-sm" style="flex:1;justify-content:center">🎤 语音讲解</button></div>
+</section>
+
+<!-- ═══════ AR RESULT (新增AR识别结果：历史叠加) ═══════ -->
+<section class="stack-page is-sub" data-page="ar-result">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>AR 识别结果</h2></div>
+<div class="banner-card"><div style="position:relative;z-index:1"><h3 style="font-size:var(--fsl);font-weight:900;margin-bottom:var(--2)">沙坡尾避风坞</h3><p style="font-size:var(--fss);opacity:.8">识别成功 · 此地有 4 个历史时期影像</p></div></div>
+<div class="history-overlay"><div class="layer layer-1920">1920 年代 · 渔船云集的避风良港</div><div class="layer layer-1950">1950 年代 · 社会主义建设时期</div><div class="layer layer-1980">1980 年代 · 特区发展与传统并存</div><div class="layer layer-2020">2020 年代 · 历史文化街区</div></div>
+<button class="btn-pr" data-push="audio-guide">🎤 听 AI 讲解这段历史</button>
+</section>
+
+<!-- ═══════ AUDIO GUIDE (增强多语言) ═══════ -->
+<section class="stack-page is-sub" data-page="audio-guide">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>AI 讲解员</h2></div>
+<div class="segment" id="langSegment"><button class="seg-btn act" data-lang="zh">普通话</button><button class="seg-btn" data-lang="min">闽南语</button><button class="seg-btn" data-lang="en">English</button><button class="seg-btn" data-lang="child">儿童版</button></div>
+<div class="info-card" style="text-align:center">
+<div style="width:64px;height:64px;border-radius:50%;background:var(--o600);margin:0 auto var(--3);display:flex;align-items:center;justify-content:center"><span class="material-symbols-rounded" style="font-size:32px;color:#fff">headphones</span></div>
+<h3>沙坡尾避风坞</h3><p style="margin-bottom:var(--3)">普通话 · 讲解已暂停</p>
+<div style="display:flex;gap:var(--2);justify-content:center;align-items:center">
+<button class="btn-sm"><span class="material-symbols-rounded">replay_10</span></button>
+<button class="btn-pr" id="playAudio" style="width:auto;padding:0 var(--8)"><span class="material-symbols-rounded" style="font-size:24px">play_arrow</span></button>
+<button class="btn-sm"><span class="material-symbols-rounded">forward_10</span></button>
+</div>
+<div style="margin-top:var(--3);display:flex;align-items:center;justify-content:center;gap:var(--2)"><span class="s-badge s-ai">AI 生成字幕</span><span class="s-badge s-ok" style="cursor:pointer" id="toggleAccessibility">无障碍字幕</span></div>
+</div>
+<div id="transcriptBox" style="font-size:var(--fss);color:var(--t2);line-height:1.75;margin-top:var(--3);padding:var(--3);background:var(--sur);border-radius:var(--rl);border:1px solid var(--bd)">沙坡尾是厦门港的起源地之一，早在明代就是渔船的避风良港。清初，这里逐渐成为厦门对外贸易的重要口岸……<br><br>1980 年代厦门设立经济特区后，沙坡尾的传统渔业与现代港口建设并行发展。至今，这里仍保留着独特的渔港风貌。</div>
+</section>
+
+<!-- ═══════ CONTRIBUTE ═══════ -->
+<section class="stack-page" data-page="contribute">
+<div class="sub-hd"><h2>共建</h2></div>
+<div class="grid-2"><div class="g-card" data-push="family-memory"><span class="g-ic material-symbols-rounded" style="color:var(--p500)">cloud_upload</span><div class="g-ti">家族记忆</div><div class="g-su">上传·识别·关联</div></div><div class="g-card" data-push="family-tree"><span class="g-ic material-symbols-rounded" style="color:var(--o600)">account_tree</span><div class="g-ti">家族树</div><div class="g-su">关系网·迁徙图</div></div><div class="g-card" data-push="study-list"><span class="g-ic material-symbols-rounded" style="color:#6b7db3">school</span><div class="g-ti">研学任务</div><div class="g-su">闯关·徽章</div></div><div class="g-card" data-push="roots-form"><span class="g-ic material-symbols-rounded" style="color:var(--p700)">family_history</span><div class="g-ti">人物寻根</div><div class="g-su">两岸·侨批</div></div></div>
+<div class="perm-panel" style="margin-bottom:var(--4)"><h3 style="font-size:var(--fsb);font-weight:700;margin-bottom:var(--3)">当前授权等级</h3><div class="perm-opts" id="permContribute"><button class="perm-opt act" data-perm="personal">个人使用</button><button class="perm-opt" data-perm="family">家庭共享</button><button class="perm-opt" data-perm="archive">授权入馆</button></div><p style="font-size:var(--fss);color:var(--t3)">上传素材默认私有，授权入馆前须馆员复核。</p></div>
+</section>
+
+<!-- ═══════ FAMILY MEMORY ═══════ -->
+<section class="stack-page is-sub" data-page="family-memory">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>我的家族记忆</h2></div>
+<div class="stepper"><div class="step act"><div class="step-d">1</div><div class="step-l">上传素材</div></div><div class="step"><div class="step-d">2</div><div class="step-l">AI 识别</div></div><div class="step"><div class="step-d">3</div><div class="step-l">授权</div></div><div class="step"><div class="step-d">4</div><div class="step-l">复核</div></div></div>
+<div class="input-group"><label>家族名称</label><input class="inp" placeholder="例如：鼓浪屿林家"/></div>
+<div class="input-group"><label>年代范围</label><div style="display:flex;gap:var(--2)"><input class="inp" style="flex:1" type="number" placeholder="起始年"/><input class="inp" style="flex:1" type="number" placeholder="终止年"/></div></div>
+<div style="display:flex;gap:var(--2);margin-bottom:var(--4)"><button class="btn-sm" style="flex:1;justify-content:center"><span class="material-symbols-rounded" style="font-size:16px">add_photo_alternate</span>照片</button><button class="btn-sm" style="flex:1;justify-content:center"><span class="material-symbols-rounded" style="font-size:16px">description</span>书信</button><button class="btn-sm" style="flex:1;justify-content:center"><span class="material-symbols-rounded" style="font-size:16px">mic</span>录音</button><button class="btn-sm" style="flex:1;justify-content:center"><span class="material-symbols-rounded" style="font-size:16px">videocam</span>视频</button></div>
+<button class="btn-pr" data-push="ai-recognition">提交并开始 AI 识别</button>
+</section>
+
+<!-- ═══════ FAMILY TREE ═══════ -->
+<section class="stack-page is-sub" data-page="family-tree">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>家族关系网</h2><div class="sub-act"><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">share</span></button></div></div>
+<div class="banner-card"><div style="position:relative;z-index:1"><h3 style="font-size:var(--fsl);font-weight:900;margin-bottom:var(--2)">林氏家族</h3><p style="font-size:var(--fss);opacity:.8">来源地：福建泉州 → 厦门鼓浪屿 · 迄今 5 代</p></div></div>
+<div style="background:var(--sur);border-radius:var(--rx);padding:var(--6);border:1px solid var(--bd);margin-bottom:var(--4);overflow-x:auto">
+<div class="graph-node" style="margin-bottom:var(--2)"><div class="graph-person"><span class="name">林老先生</span><span class="relation">第一代 (泉州)</span></div></div>
+<div class="graph-line"></div>
+<div class="graph-branch"><div class="graph-node"><div class="graph-person"><span class="name">林伯公</span><span class="relation">第二代 · 迁厦</span></div></div><div class="graph-node"><div class="graph-person"><span class="name">林叔公</span><span class="relation">第二代 · 留泉</span></div></div></div>
+<div class="graph-line"></div>
+<div class="graph-branch"><div class="graph-node"><div class="graph-person"><span class="name">林父</span><span class="relation">第三代 · 鼓浪屿</span></div></div></div>
+<div class="graph-line"></div>
+<div class="graph-node"><div class="graph-person"><span class="name">我</span><span class="relation">第四代</span></div></div>
+</div>
+</section>
+
+<!-- ═══════ STUDY LIST ═══════ -->
+<section class="stack-page is-sub" data-page="study-list">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>研学任务</h2></div>
+<div class="list-card" data-push="study-detail"><div class="lc-ic" style="background:#6b7db3"><span class="material-symbols-rounded">auto_fix</span></div><div class="lc-bd"><h4>小小档案修复师</h4><p>适合 8-12 岁 · 约 20 min</p></div><span class="s-badge s-ok">可参与</span></div>
+<div class="list-card" data-push="study-detail"><div class="lc-ic" style="background:var(--p500)"><span class="material-symbols-rounded">mail</span></div><div class="lc-bd"><h4>侨批中的家国情怀</h4><p>适合 12-16 岁 · 约 30 min</p></div><span class="s-badge s-warn">进行中</span></div>
+<div class="list-card"><div class="lc-ic" style="background:var(--o600)"><span class="material-symbols-rounded">engineering</span></div><div class="lc-bd"><h4>特区拓荒者</h4><p>适合 14-18 岁 · 约 40 min</p></div><span class="s-badge s-ai">新上线</span></div>
+</section>
+
+<!-- ═══════ STUDY DETAIL (增强：角色选择+对话) ═══════ -->
+<section class="stack-page is-sub" data-page="study-detail">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>侨批中的家国情怀</h2></div>
+<div class="banner-card" style="background:linear-gradient(135deg,var(--p500),var(--p700))"><div style="position:relative;z-index:1"><h3 style="font-size:var(--fsl);font-weight:900;margin-bottom:var(--2)">学习目标</h3><p style="font-size:var(--fss);opacity:.9">了解侨批历史 · 掌握档案解读方法 · 培养家国情怀</p><p style="font-size:var(--fsx);opacity:.7;margin-top:var(--2)">适合 12-16 岁 · 预计 30 分钟 · 关联侨批档案 12 份</p></div></div>
+<div class="sect-label">选择角色</div>
+<div class="grid-2" style="margin-bottom:var(--3)">
+<div class="g-card" data-push="study-role" style="text-align:center;padding:var(--5)"><span class="g-ic material-symbols-rounded" style="color:#6b7db3;font-size:32px">person_search</span><div class="g-ti" style="font-size:var(--fsb)">侨批研究员</div><div class="g-su">解读真实侨批书信</div></div>
+<div class="g-card" data-push="study-role" style="text-align:center;padding:var(--5)"><span class="g-ic material-symbols-rounded" style="color:var(--p500);font-size:32px">history</span><div class="g-ti" style="font-size:var(--fsb)">历史记录者</div><div class="g-su">还原家族迁徙故事</div></div>
+</div>
+<button class="btn-pr" data-push="study-dialogue">开始闯关 →</button>
+</section>
+
+<!-- ═══════ STUDY ROLE (角色选择确认) ═══════ -->
+<section class="stack-page is-sub" data-page="study-role">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>角色确认</h2></div>
+<div class="info-card info-card--a" style="text-align:center"><div style="width:64px;height:64px;border-radius:50%;background:#6b7db3;margin:0 auto var(--2);display:flex;align-items:center;justify-content:center"><span class="material-symbols-rounded" style="font-size:28px;color:#fff">person_search</span></div><h3>侨批研究员</h3><p>你是一名档案研究员，正在整理一批来自海外的侨批书信。你的任务是解读这些书信的内容，还原背后的家族故事。</p></div>
+<button class="btn-pr" data-push="study-dialogue">开始任务</button>
+</section>
+
+<!-- ═══════ STUDY DIALOGUE (新增对话式闯关) ═══════ -->
+<section class="stack-page is-sub" data-page="study-dialogue">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>任务进行中</h2><div style="font-size:var(--fsx);color:var(--t2);flex-shrink:0">进度 1/5</div></div>
+<div class="dialogue-role"><div class="avatar" style="background:#6b7db3"><span class="material-symbols-rounded">smart_toy</span></div><div style="flex:1"><div style="font-size:var(--fss);font-weight:700">档案助手小鹭</div><div style="font-size:var(--fsx);color:var(--t2)">AI 对话引导</div></div></div>
+<div style="display:flex;flex-direction:column;gap:var(--3);margin-bottom:var(--4)">
+<div class="chat-bub bot" style="align-self:flex-start;max-width:88%;margin-bottom:0"><strong>小鹭</strong>欢迎你，研究员！今天我们要解读一封来自 1935 年的侨批。这封信从菲律宾寄往厦门禾山，你能帮我看一下这封信的关键信息吗？</div>
+<div class="chat-bub user" style="align-self:flex-end;max-width:88%;margin-bottom:0">好的，我来看看。</div>
+<div class="chat-bub bot" style="align-self:flex-start;max-width:88%;margin-bottom:0"><strong>小鹭</strong><em>"父母亲大人尊前：叩别以来，倏忽数月。儿在厦生理如常，勿劳远念。兹逢便船之便，付去英银肆元，到祈查收……"</em><br><br>根据这段话，请你判断：这封信是从哪里寄出的？</div>
+</div>
+<div class="grid-2" style="margin-bottom:var(--3)"><button class="g-card" data-push="study-feedback" data-answer="A" style="text-align:left"><span style="font-size:var(--fsx);color:var(--t2)">A</span><div style="font-weight:700;font-size:var(--fss)">菲律宾马尼拉</div><div style="font-size:var(--fsx);color:var(--t2)">1920-1935 年</div></button><button class="g-card" data-push="study-feedback" data-answer="B" style="text-align:left"><span style="font-size:var(--fsx);color:var(--t2)">B</span><div style="font-weight:700;font-size:var(--fss)">印尼巴达维亚</div><div style="font-size:var(--fsx);color:var(--t2)">1930-1940 年</div></button><button class="g-card" data-push="study-feedback" data-answer="C" style="text-align:left"><span style="font-size:var(--fsx);color:var(--t2)">C</span><div style="font-weight:700;font-size:var(--fss)">新加坡</div><div style="font-size:var(--fsx);color:var(--t2)">1910-1930 年</div></button><button class="g-card" data-push="study-feedback" data-answer="D" style="text-align:left"><span style="font-size:var(--fsx);color:var(--t2)">D</span><div style="font-weight:700;font-size:var(--fss)">马来西亚槟城</div><div style="font-size:var(--fsx);color:var(--t2)">1930-1950 年</div></button></div>
+<div class="info-card" data-push="study-clue" style="cursor:pointer;border-color:var(--o200);background:var(--o50)"><div style="display:flex;align-items:center;gap:var(--2)"><span class="material-symbols-rounded" style="color:var(--o600)">menu_book</span><span style="font-weight:700;font-size:var(--fss)">线索档案</span></div><p style="margin-top:var(--1)">点击查看菲律宾侨批邮戳及历史地名对照</p></div>
+</section>
+
+<!-- ═══════ STUDY FEEDBACK (新增答题反馈页) ═══════ -->
+<section class="stack-page is-sub" data-page="study-feedback">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>答题反馈</h2></div>
+<div class="banner-card" id="feedbackCard" style="background:linear-gradient(135deg,var(--ok),var(--o600))"><div style="position:relative;z-index:1;text-align:center"><span class="material-symbols-rounded" style="font-size:48px;margin-bottom:var(--2)">check_circle</span><h3 id="feedbackTitle" style="font-size:var(--fsxl);font-weight:900;margin-bottom:var(--1)">回答正确！</h3><p id="feedbackReason">这封信中"英银"指英国银元（墨西哥鹰洋），"便船"表明通过不定期商船寄送，这些特征符合 1920-1935 年菲律宾马尼拉→厦门的侨批特征。</p></div></div>
+<div class="info-card info-card--a" style="margin-top:var(--3)"><h3>知识点</h3><p>1930 年代，菲律宾华侨主要通过"信局"（批局）汇款回家。侨批不仅是一种金融工具，更承载了华侨对家乡的思念与责任。每一封侨批背后，都是一个跨越海洋的家族故事。</p></div>
+<button class="btn-pr" data-push="study-dialogue" style="margin-top:var(--3)">继续下一关</button>
+</section>
+
+<!-- ═══════ STUDY CLUE (新增线索档案页) ═══════ -->
+<section class="stack-page is-sub" data-page="study-clue">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>线索档案</h2></div>
+<div class="info-card info-card--a">
+<h3>菲律宾—厦门 侨批邮戳对照</h3>
+<div style="margin-top:var(--3);display:flex;flex-direction:column;gap:var(--2)">
+<div style="display:flex;align-items:center;gap:var(--3);padding:var(--2);background:var(--sur);border-radius:var(--rl)">
+<span style="font-weight:700;font-size:var(--fss);width:80px;flex-shrink:0">英银</span><span style="font-size:var(--fss);color:var(--t2)">英国银元（墨西哥鹰洋），当时菲律宾主要流通货币</span>
+</div>
+<div style="display:flex;align-items:center;gap:var(--3);padding:var(--2);background:var(--sur);border-radius:var(--rl)">
+<span style="font-weight:700;font-size:var(--fss);width:80px;flex-shrink:0">便船</span><span style="font-size:var(--fss);color:var(--t2)">不定期商船，侨批常由船员代为携带</span>
+</div>
+<div style="display:flex;align-items:center;gap:var(--3);padding:var(--2);background:var(--sur);border-radius:var(--rl)">
+<span style="font-weight:700;font-size:var(--fss);width:80px;flex-shrink:0">生理</span><span style="font-size:var(--fss);color:var(--t2)">闽南语"生意"，指在厦门的营生</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ═══════ STUDY REPORT (新增研学报告) ═══════ -->
+<section class="stack-page is-sub" data-page="study-report">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>研学报告</h2><div class="sub-act"><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">share</span></button></div></div>
+<div class="banner-card" style="background:linear-gradient(135deg,#6b7db3,#8a9ed4)"><div style="position:relative;z-index:1;text-align:center"><span class="material-symbols-rounded" style="font-size:48px;margin-bottom:var(--2)">verified</span><h3 style="font-size:var(--fsxl);font-weight:900;margin-bottom:var(--1)">侨批中的家国情怀</h3><p style="font-size:var(--fss);opacity:.8">任务完成 · 获得「侨批研究员」徽章</p></div></div>
+<div class="info-card"><h3>学习总结</h3><p>通过 5 关任务，你解读了 3 封真实侨批，了解了 1930 年代华侨通过侨批汇款回家的历史，掌握了侨批档案的基本解读方法。</p></div>
+<div class="info-card"><h3>关键知识点</h3><div style="display:flex;flex-wrap:wrap;gap:var(--2);margin-top:var(--2)"><span class="tag tag--o">侨批</span><span class="tag">信局</span><span class="tag tag--a">英银</span><span class="tag tag--o">菲律宾</span><span class="tag">厦门禾山</span><span class="tag tag--a">1930年代</span></div></div>
+</section>
+
+<!-- ═══════ ROOTS FORM (寻根多步骤表单) ═══════ -->
+<section class="stack-page is-sub" data-page="roots-form">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>寻根线索</h2></div>
+<div class="stepper"><div class="step act"><div class="step-d">1</div><div class="step-l">基本信息</div></div><div class="step"><div class="step-d">2</div><div class="step-l">亲属关系</div></div><div class="step"><div class="step-d">3</div><div class="step-l">族谱线索</div></div><div class="step"><div class="step-d">4</div><div class="step-l">身份认证</div></div></div>
+<div class="input-group"><label>姓名 <span style="color:var(--err)">*</span></label><input class="inp" placeholder="请输入被寻人的姓名" id="rootsName"/><span class="inp-err">请输入姓名</span></div>
+<div class="input-group"><label>字 / 号 / 别名</label><input class="inp" placeholder="如有其他称呼请填写"/></div>
+<div class="input-group"><label>祖籍 <span style="color:var(--err)">*</span></label><input class="inp" placeholder="例如：福建泉州南安县" id="rootsOrigin"/><span class="inp-err">请输入祖籍地</span></div>
+<div class="input-group"><label>迁徙年份（如知悉）</label><input class="inp" type="number" placeholder="例如：1920"/></div>
+<div class="input-group"><label>海外地名（如知悉）</label><input class="inp" placeholder="例如：菲律宾马尼拉"/></div>
+<button class="btn-pr" id="nextRootsStep">下一步：亲属关系 →</button>
+</section>
+
+<!-- ═══════ ROOTS IDENTITY (新增身份认证页) ═══════ -->
+<section class="stack-page is-sub" data-page="roots-identity">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>身份认证</h2></div>
+<div class="info-card info-card--a"><div style="display:flex;align-items:center;gap:var(--2);margin-bottom:var(--2)"><span class="material-symbols-rounded" style="color:var(--a600)">security</span><span style="font-weight:700;font-size:var(--fss);color:var(--a700)">身份认证说明</span></div><p>寻根服务涉及个人及亲属信息，需要进行身份认证确认您有权限查询。以下信息仅用于核验身份，不会用于其他用途。</p></div>
+<div class="input-group"><label>证件类型</label><select class="inp" style="appearance:auto"><option>居民身份证</option><option>台胞证</option><option>护照</option></select></div>
+<div class="input-group"><label>证件号码 <span style="color:var(--err)">*</span></label><input class="inp" placeholder="请输入证件号码" id="rootsIdNum"/><span class="inp-err">请输入有效证件号码</span></div>
+<div class="input-group"><label>手机号 <span style="color:var(--err)">*</span></label><div style="display:flex;gap:var(--2)"><input class="inp" style="flex:1" type="tel" placeholder="请输入手机号" id="rootsPhone"/><button class="btn-r" style="border-radius:var(--rl);white-space:nowrap">获取验证码</button></div><span class="inp-err">请输入手机号</span></div>
+<div class="input-group"><label>与寻根对象的关系</label><select class="inp" style="appearance:auto"><option>本人</option><option>直系亲属（父母/子女）</option><option>旁系亲属</option><option>宗亲</option><option>学术研究</option></select></div>
+<button class="btn-pr" data-push="roots-clues">提交并开始召回</button>
+</section>
+
+<!-- ═══════ ROOTS CLUES (新增线索召回页) ═══════ -->
+<section class="stack-page is-sub" data-page="roots-clues">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>线索召回</h2></div>
+<div class="banner-card"><div style="position:relative;z-index:1"><h3 style="font-size:var(--fsl);font-weight:900;margin-bottom:var(--2)">召回结果</h3><p style="font-size:var(--fss);opacity:.8">AI 已从馆藏档案中检索到相关线索</p></div></div>
+<div class="sect-label">高置信度 3 条</div>
+<div class="list-card"><div class="lc-ic" style="background:var(--ok)"><span class="material-symbols-rounded">check</span></div><div class="lc-bd"><h4>陈氏家族侨汇记录 (1935)</h4><p>来源：xm-qp-1935-0021 · 公开</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card"><div class="lc-ic" style="background:var(--ok)"><span class="material-symbols-rounded">check</span></div><div class="lc-bd"><h4>陈氏族谱 (集美卷)</h4><p>来源：xm-zp-1940-0003 · 可查阅</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="sect-label">中置信度 3 条<span style="font-size:var(--fsx);font-weight:400;color:var(--t3);margin-left:var(--2)">需人工确认</span></div>
+<div class="list-card"><div class="lc-ic" style="background:var(--a500)"><span class="material-symbols-rounded">help</span></div><div class="lc-bd"><h4>厦门港务局人事档案 (相关度 72%)</h4><p>姓名相似 · 需授权查阅</p></div><span class="s-badge s-warn">需授权</span></div>
+<div class="sect-label">低置信度 1 条</div>
+<div class="list-card" style="opacity:.6"><div class="lc-ic" style="background:var(--t3)"><span class="material-symbols-rounded">search</span></div><div class="lc-bd"><h4>Singapore Chen Family Letters (1942)</h4><p>英文档案 · 地名模糊匹配</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<button class="btn-pr" data-push="roots-graph">查看亲缘图谱</button>
+</section>
+
+<!-- ═══════ ROOTS GRAPH (新增亲缘图谱页) ═══════ -->
+<section class="stack-page is-sub" data-page="roots-graph">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>亲缘图谱</h2><div class="sub-act"><button class="btn-gh" style="min-width:40px;justify-content:center"><span class="material-symbols-rounded">share</span></button></div></div>
+<div class="banner-card"><div style="position:relative;z-index:1"><h3 style="font-size:var(--fsl);font-weight:900;margin-bottom:var(--2)">陈氏跨境亲缘网</h3><p style="font-size:var(--fss);opacity:.8">基于 7 条馆藏档案构建 · 每条关系可溯源</p></div></div>
+<div style="background:var(--sur);border-radius:var(--rx);padding:var(--6);border:1px solid var(--bd);text-align:center;margin-bottom:var(--4)">
+<div class="graph-node" style="margin-bottom:0"><div class="graph-person" style="border-color:var(--p500)"><span class="name">陈某某</span><span class="relation">泉州·寻根目标</span></div></div>
+<div class="graph-line"></div>
+<div class="graph-branch"><div class="graph-node"><div class="graph-person" style="border-color:var(--o600)"><span class="name">陈金水</span><span class="relation">菲律宾·侨汇人</span></div></div><div class="graph-node"><div class="graph-person" style="border-color:var(--a500)"><span class="name">陈氏宗祠</span><span class="relation">集美·族谱</span></div></div></div>
+</div>
+<button class="btn-pr" data-push="roots-trace" style="margin-bottom:var(--2)">查看档案溯源</button>
+<button class="btn-ol" data-push="roots-assist">申请人工协助</button>
+</section>
+
+<!-- ═══════ ROOTS TRACE (新增档案溯源页) ═══════ -->
+<section class="stack-page is-sub" data-page="roots-trace">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>档案溯源</h2></div>
+<div class="info-card info-card--a"><h3>关系：陈某某 → 陈金水</h3><p style="font-size:var(--fss);color:var(--t2);margin-bottom:var(--2)">此关系基于以下档案构建</p><div class="list-card" style="margin:0"><span class="material-symbols-rounded" style="color:var(--o600)">description</span><div class="lc-bd"><h4 style="font-size:var(--fss)">陈氏家族侨汇记录 (1935)</h4><p>xm-qp-1935-0021 · 公开</p></div><span class="s-badge s-ok">可查阅</span></div></div>
+<div class="info-card"><h3>关系：陈某某 → 陈氏宗祠</h3><p style="font-size:var(--fss);color:var(--t2);margin-bottom:var(--2)">此关系基于以下档案构建</p><div class="list-card" style="margin:0"><span class="material-symbols-rounded" style="color:var(--o600)">description</span><div class="lc-bd"><h4 style="font-size:var(--fss)">陈氏族谱 (集美卷)</h4><p>xm-zp-1940-0003 · 可现场查阅</p></div><span class="s-badge s-rev">预约查阅</span></div></div>
+</section>
+
+<!-- ═══════ ROOTS ASSIST (新增人工协助申请) ═══════ -->
+<section class="stack-page is-sub" data-page="roots-assist">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>人工协助</h2></div>
+<div class="info-card info-card--a"><div style="display:flex;align-items:center;gap:var(--2);margin-bottom:var(--2)"><span class="material-symbols-rounded" style="color:var(--p600)">support_agent</span><span style="font-weight:700;font-size:var(--fss);color:var(--p700)">复杂寻根需人工介入</span></div><p>如自动召回结果不够完整，或您有超出系统能力的寻根需求（如残缺族谱拼接、方言地名转译、跨境档案调取），请填写以下信息，馆员将在 5 个工作日内联系您。</p></div>
+<div class="input-group"><label>具体需求描述 <span style="color:var(--err)">*</span></label><textarea class="inp ta" placeholder="请详细描述您的寻根需求，包括已知线索和希望查找的方向..."></textarea></div>
+<div class="input-group"><label>可提供的辅助材料</label><textarea class="inp ta" placeholder="如手头有残缺族谱、老照片、老信件，请在此说明..."></textarea></div>
+<div class="input-group"><label>联系手机号</label><input class="inp" type="tel" placeholder="用于馆员联系您"/></div>
+<button class="btn-pr" id="submitAssist">提交人工协助申请</button>
+</section>
+
+<!-- ═══════ MINE (增强：待办+记录) ═══════ -->
+<section class="stack-page" data-page="mine">
+<div class="sub-hd"><h2>我的</h2></div>
+<div class="profile-card" data-push="login" style="display:flex;gap:var(--4);background:var(--sur);border-radius:var(--rx);padding:var(--5);border:1px solid var(--bd);box-shadow:var(--x2);margin-bottom:var(--4);align-items:center"><div class="avatar"><span class="material-symbols-rounded">person</span></div><div class="lc-bd"><h4>公众用户</h4><p>点击登录 · 未实名</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+
+<div class="sect-label">我的待办</div>
+<div class="list-card" data-push="review-status"><div class="lc-ic" style="background:var(--a500)"><span class="material-symbols-rounded">hourglass_empty</span></div><div class="lc-bd"><h4>2 项在审核中</h4><p>上传的素材等待馆员复核</p></div><span class="s-badge s-warn">待处理</span></div>
+<div class="list-card" data-push="review-status"><div class="lc-ic" style="background:var(--o600)"><span class="material-symbols-rounded">description</span></div><div class="lc-bd"><h4>1 项查档申请</h4><p>厦门港务局人事档案查阅申请</p></div><span class="s-badge s-rev">审核中</span></div>
+
+<div class="sect-label">我的记录</div>
+<div class="list-card"><div class="lc-ic" style="background:var(--p500)"><span class="material-symbols-rounded">folder</span></div><div class="lc-bd"><h4>我的上传</h4><p>3 条素材</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="contributor-center"><div class="lc-ic" style="background:var(--ok)"><span class="material-symbols-rounded">edit_note</span></div><div class="lc-bd"><h4>我的认领</h4><p>3 条老照片认领记录</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="study-report"><div class="lc-ic" style="background:#6b7db3"><span class="material-symbols-rounded">school</span></div><div class="lc-bd"><h4>我的研学报告</h4><p>1 份已完成</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="entry-certificate"><div class="lc-ic" style="background:var(--a500)"><span class="material-symbols-rounded">verified</span></div><div class="lc-bd"><h4>贡献证书</h4><p>1 张入馆贡献证明</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="roots-clues"><div class="lc-ic" style="background:var(--p700)"><span class="material-symbols-rounded">family_history</span></div><div class="lc-bd"><h4>寻根进度</h4><p>1 条寻根线索 · 召回 7 条结果</p></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+
+<div class="sect-label">更多</div>
+<div class="list-card" data-push="badges"><div class="lc-ic" style="background:#6b7db3"><span class="material-symbols-rounded">verified</span></div><div class="lc-bd"><h4>荣誉徽章</h4></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="settings"><div class="lc-ic" style="background:var(--t2)"><span class="material-symbols-rounded">settings</span></div><div class="lc-bd"><h4>设置</h4></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+<div class="list-card" data-push="about"><div class="lc-ic" style="background:var(--a500)"><span class="material-symbols-rounded">info</span></div><div class="lc-bd"><h4>关于</h4></div><span class="lc-ar material-symbols-rounded">chevron_right</span></div>
+</section>
+
+<!-- ═══════ LOGIN / REGISTER ═══════ -->
+<section class="stack-page is-sub" data-page="login">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>登录</h2></div>
+<div style="text-align:center;padding:var(--8) 0 var(--4)"><div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--p500),var(--a400));margin:0 auto var(--3);display:flex;align-items:center;justify-content:center"><span class="material-symbols-rounded" style="font-size:32px;color:#fff">account_circle</span></div><h3 style="font-size:var(--fsxl);font-weight:900;font-family:var(--ff);margin-bottom:var(--1)">欢迎回来</h3><p style="font-size:var(--fss);color:var(--t3)">登录后可查看个人档案和使用共建服务</p></div>
+<div class="input-group"><label>手机号</label><input class="inp" type="tel" placeholder="请输入手机号" id="loginPhone"/><span class="inp-err">请输入有效的 11 位手机号码</span></div>
+<div class="input-group"><label>验证码</label><div style="display:flex;gap:var(--2)"><input class="inp" style="flex:1" placeholder="6 位验证码"/><button class="btn-r" style="border-radius:var(--rl);white-space:nowrap" id="sendCode">获取验证码</button></div></div>
+<button class="btn-pr" id="doLogin">登录</button><button class="btn-ol" data-push="register">注册新账号</button>
+</section>
+
+<section class="stack-page is-sub" data-page="register">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>注册</h2></div>
+<div class="input-group"><label>手机号 <span style="color:var(--err)">*</span></label><input class="inp" type="tel" placeholder="请输入手机号"/></div>
+<div class="input-group"><label>姓名 <span style="color:var(--err)">*</span></label><input class="inp" placeholder="请输入真实姓名"/></div>
+<div class="input-group"><label>身份证号 <span style="color:var(--err)">*</span></label><input class="inp" placeholder="请输入身份证号" id="regIdCard"/><span class="inp-err">请输入有效的 18 位身份证号码</span></div>
+<div class="info-card info-card--a" style="margin-top:var(--3)"><p style="font-size:var(--fss);color:var(--t2)">实名认证仅用于档案查询权限验证，信息加密存储，未经授权不向第三方提供。</p></div>
+<button class="btn-pr" id="doRegister">提交注册</button>
+</section>
+
+<!-- ═══════ SETTINGS / ABOUT ═══════ -->
+<section class="stack-page is-sub" data-page="settings">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>设置</h2></div>
+<div class="sect-label">偏好设置</div>
+<div class="list-card"><div class="lc-bd"><h4>语言偏好</h4><p>界面和讲解语言</p></div><span style="font-size:var(--fss);color:var(--t2)">简体中文</span></div>
+<div class="list-card"><div class="lc-bd"><h4>讲解语种</h4><p>默认语音导览语言</p></div><span style="font-size:var(--fss);color:var(--t2)">普通话</span></div>
+<div class="sect-label" style="margin-top:var(--3)">隐私与通知</div>
+<div class="list-card"><div class="lc-bd"><h4>个性化推荐</h4></div><span style="font-size:var(--fss);color:var(--o500);font-weight:600">已开启</span></div>
+<div class="list-card"><div class="lc-bd"><h4>每日推送</h4></div><span style="font-size:var(--fss);color:var(--o500);font-weight:600">已开启</span></div>
+</section>
+
+<section class="stack-page is-sub" data-page="about">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>关于</h2></div>
+<div style="text-align:center;padding:var(--8) 0 var(--4)"><div style="width:64px;height:64px;border-radius:var(--rl);background:linear-gradient(135deg,var(--p500),var(--a400));margin:0 auto var(--3);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(196,112,90,.3)"><span class="material-symbols-rounded" style="font-size:32px;color:#fff">layers</span></div><h3 style="font-size:var(--fsxl);font-weight:900;font-family:var(--ff)">鹭岛记忆</h3><p style="font-size:var(--fss);color:var(--t2)">v1.0.0 Demo</p></div>
+<div class="info-card"><p style="font-size:var(--fss);color:var(--t2);line-height:1.75">鹭岛记忆是厦门市档案馆面向公众推出的智慧档案服务平台。通过 AI 智能检索、地图导览、AR 打卡和公众共建，让城市档案走出库房，成为人人可查、可看、可走、可传的城市记忆。</p></div>
+<div class="info-card"><h3 style="font-size:var(--fss);font-weight:700;margin-bottom:var(--2)">联系方式</h3><p style="font-size:var(--fss);color:var(--t2)">厦门市思明区湖滨北路 · 厦门市档案馆</p></div>
+</section>
+
+<!-- ═══════ REMAINING PAGES (voice/image/photo-compare/collections/uploads/badges) ═══════ -->
+<section class="stack-page is-sub" data-page="voice-search">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>语音查档</h2></div>
+<div style="text-align:center;padding:var(--12) 0"><div style="width:72px;height:72px;border-radius:50%;background:var(--p500);margin:0 auto var(--4);display:flex;align-items:center;justify-content:center;animation:mapPulse 2s infinite"><span class="material-symbols-rounded" style="font-size:32px;color:#fff">mic</span></div><h3 style="font-size:var(--fsl);font-weight:700;margin-bottom:var(--2)">点击开始录音</h3><p style="font-size:var(--fss);color:var(--t3)">支持普通话 · 闽南语 · 英文</p></div>
+</section>
+
+<section class="stack-page is-sub" data-page="image-search">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>以图搜档</h2></div>
+<div style="border:2px dashed var(--bds);border-radius:var(--rx);padding:var(--8);text-align:center;margin-bottom:var(--4)"><span class="material-symbols-rounded" style="font-size:48px;color:var(--t3);margin-bottom:var(--3)">add_photo_alternate</span><h3 style="font-size:var(--fsb);font-weight:700;margin-bottom:var(--1)">拍照或选择图片</h3><p style="font-size:var(--fss);color:var(--t3)">AI 自动识别地标、建筑、年代特征</p><div style="display:flex;gap:var(--2);margin-top:var(--4);justify-content:center"><button class="btn-sm" style="padding:var(--3) var(--5)"><span class="material-symbols-rounded" style="font-size:16px">camera</span> 拍照</button><button class="btn-sm" style="padding:var(--3) var(--5)"><span class="material-symbols-rounded" style="font-size:16px">photo_library</span> 相册</button></div></div>
+</section>
+
+<section class="stack-page is-sub" data-page="photo-compare">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>今昔对比</h2></div>
+<div style="display:flex;gap:2px;border-radius:var(--rx);overflow:hidden;box-shadow:var(--x3);margin-bottom:var(--4)"><div style="flex:1;height:200px;background:linear-gradient(135deg,var(--p100),var(--a100));display:flex;align-items:flex-end;padding:var(--3)"><span style="font-size:var(--fsx);font-weight:700;color:var(--p600);background:rgba(255,255,255,.8);padding:var(--1) var(--2);border-radius:var(--rs)">1980 年</span></div><div style="flex:1;height:200px;background:linear-gradient(135deg,var(--o100),var(--o200));display:flex;align-items:flex-end;padding:var(--3)"><span style="font-size:var(--fsx);font-weight:700;color:var(--o600);background:rgba(255,255,255,.8);padding:var(--1) var(--2);border-radius:var(--rs)">2024 年</span></div></div>
+</section>
+
+<section class="stack-page is-sub" data-page="collections">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>我的收藏</h2></div>
+<div class="empty-state"><span class="icon material-symbols-rounded">bookmark</span><h3>暂无收藏</h3><p>浏览档案、照片或路线时可以收藏</p><button class="btn-sm" data-pop style="margin-top:var(--4)">去浏览</button></div>
+</section>
+
+<section class="stack-page is-sub" data-page="my-uploads">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>我的上传</h2></div>
+<div class="empty-state"><span class="icon material-symbols-rounded">folder</span><h3>暂无上传</h3><p>上传老照片、家族书信或录音</p><button class="btn-sm" data-push="photo-upload" style="margin-top:var(--4)">去上传</button></div>
+</section>
+
+<section class="stack-page is-sub" data-page="badges">
+<div class="sub-hd"><button class="btn-back" data-pop><span class="material-symbols-rounded">arrow_back</span></button><h2>荣誉徽章</h2></div>
+<div class="grid-2"><div style="text-align:center;padding:var(--4);background:var(--sur);border-radius:var(--rl);border:1px solid var(--bd)"><div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#f5cc8c,#d4915c);margin:0 auto var(--2);display:flex;align-items:center;justify-content:center"><span class="material-symbols-rounded" style="font-size:28px;color:#fff">verified</span></div><div style="font-size:var(--fss);font-weight:700">初次查档</div><div style="font-size:var(--fsx);color:var(--t3)">已完成</div></div><div style="text-align:center;padding:var(--4);background:var(--sur);border-radius:var(--rl);border:1px solid var(--bd)"><div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#a8d5d4,#72b8b6);margin:0 auto var(--2);display:flex;align-items:center;justify-content:center"><span class="material-symbols-rounded" style="font-size:28px;color:#fff">photo_library</span></div><div style="font-size:var(--fss);font-weight:700">首张认领</div><div style="font-size:var(--fsx);color:var(--t3)">已完成</div></div></div>
+</section>
+
+</div><!-- /pagesContainer -->
+
+<!-- ═══════ BOTTOM NAV ═══════ -->
+<nav class="bottom-nav" id="bottomNav">
+<button class="nav-tab act" data-nav="home"><span class="icon material-symbols-rounded">home</span>首页</button>
+<button class="nav-tab" data-nav="ask"><span class="icon material-symbols-rounded">smart_toy</span>问档案</button>
+<button class="nav-tab" data-nav="memory"><span class="icon material-symbols-rounded">photo_library</span>看厦门</button>
+<button class="nav-tab" data-nav="city"><span class="icon material-symbols-rounded">explore</span>走厦门</button>
+<button class="nav-tab" data-nav="contribute"><span class="icon material-symbols-rounded">cloud_upload</span>共建</button>
+<button class="nav-tab" data-nav="mine"><span class="icon material-symbols-rounded">person</span>我的</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+<div class="overlay" id="privacyOverlay"><div class="modal"><h2>隐私与开放边界</h2><p>公开档案可直接浏览；涉及个人信息、亲属关系、证明用途时进入实名授权。用户上传素材默认私有，授权入馆前必须经馆员复核。</p><button class="btn-pr" id="closePrivacy">知道了</button></div></div>
+</div>
+
+<!-- ════════════ JS ════════════ -->
+<script>
+(function(){
+'use strict';
+var D=document;
+var ROOT=['home','ask','memory','city','contribute','mine'];
+var container=D.getElementById('pagesContainer');
+var toast=D.getElementById('toast');
+var pOverlay=D.getElementById('privacyOverlay');
+var tTimer=null;
+var stack=[];
+var currentRoot='home';
+
+function show(msg,type){if(tTimer)clearTimeout(tTimer);toast.textContent=msg;toast.className='toast show'+(type==='ok'?' toast--ok':'')+(type==='err'?' toast--err':'');tTimer=setTimeout(function(){toast.className='toast';tTimer=null},2000)}
+function byPage(id){return D.querySelector('[data-page="'+id+'"]')}
+
+function navRoot(pg){
+  currentRoot=pg;stack=[];
+  D.querySelectorAll('.stack-page').forEach(function(p){
+    p.classList.remove('active','entering','leaving');
+    if(p.dataset.page===pg){p.classList.add('active');p.scrollTop=0}
+  });
+  D.querySelectorAll('.nav-tab').forEach(function(t){t.classList.toggle('act',t.dataset.nav===pg)});
+  container.scrollTop=0;
+}
+
+function pushPg(pageId){
+  var el=byPage(pageId);if(!el)return;
+  var cur=D.querySelector('.stack-page.active');
+  if(cur){cur.classList.remove('active');cur.classList.add('leaving');setTimeout(function(){cur.classList.remove('leaving')},400)}
+  D.querySelectorAll('.stack-page').forEach(function(p){if(ROOT.indexOf(p.dataset.page)>=0)p.classList.remove('active','entering','leaving')});
+  stack.push({pageId:pageId,root:currentRoot});
+  el.classList.add('entering');el.style.transition='none';el.offsetHeight;
+  requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.remove('entering');el.classList.add('active');el.style.transition=''})});
+  D.querySelectorAll('.nav-tab').forEach(function(t){t.classList.toggle('act',t.dataset.nav===currentRoot)});
+  el.scrollTop=0;container.scrollTop=0;
+}
+
+function popPg(){
+  if(!stack.length)return;
+  var lid=stack.pop();
+  var el=byPage(lid.pageId);if(el)el.classList.remove('active','entering','leaving');
+  if(stack.length>0){var prevObj=stack[stack.length-1];var prev=byPage(prevObj.pageId);if(prev){prev.classList.add('active');prev.scrollTop=0};currentRoot=prevObj.root||currentRoot}
+  else{var rn=document.querySelector('.nav-tab.act');var rp=rn?rn.dataset.nav:'home';D.querySelectorAll('.stack-page').forEach(function(p){if(ROOT.indexOf(p.dataset.page)>=0)p.classList.toggle('active',p.dataset.page===rp)});currentRoot=rp}
+  D.querySelectorAll('.nav-tab').forEach(function(t){t.classList.toggle('act',t.dataset.nav===currentRoot)});
+  container.scrollTop=0;
+}
+
+/* validate */
+function vPhone(el){var v=el.value.replace(/\s/g,'');var ok=/^1[3-9]\d{9}$/.test(v);el.classList.toggle('err',!ok);return ok}
+function vIdCard(el){var v=el.value.trim();var ok=/^\d{17}[\dXx]$/.test(v);el.classList.toggle('err',!ok);return ok}
+function vRequired(el){var ok=el.value.trim().length>0;el.classList.toggle('err',!ok);return ok}
+
+/* specific button callbacks */
+function bind(id,fn){var el=D.getElementById(id);if(el)el.addEventListener('click',fn)}
+bind('bookmarkResult',function(){show('已收藏','ok')});
+bind('applyAccess',function(){show('查档申请已提交','ok')});
+bind('claimSure',function(){show('认领信息已提交','ok');setTimeout(function(){pushPg('claim-success')},600)});
+bind('confirmUploadBtn',function(){show('上传成功，AI 正在识别...','ok');setTimeout(function(){pushPg('ai-recognition')},800)});
+bind('startGenerate',function(){show('AI 正在生成...','ok');var st=D.querySelectorAll('#genSteps .gen-step');if(st.length){var i=0;function nx(){if(i<st.length){st[i].classList.add('active');if(i>0)st[i-1].classList.add('done');i++;setTimeout(nx,i===st.length?600:800)}else{var vc=D.getElementById('viewYearCard');if(vc)vc.style.display='flex';show('生成完成！','ok')}}nx()}});
+bind('submitWithAuth',function(){show('素材已提交，等待馆员复核','ok');setTimeout(function(){pushPg('review-status')},600)});
+bind('doLogin',function(){var el=D.getElementById('loginPhone');if(!el||!vPhone(el)){show('请输入有效的手机号码','err');return}show('验证码已发送','ok')});
+bind('doRegister',function(){var el=D.getElementById('regIdCard');if(el&&!vIdCard(el)){show('请输入有效的身份证号码','err');return}show('注册成功','ok')});
+bind('sendCode',function(){show('验证码已发送','ok')});
+bind('playAudio',function(){show('正在播放...','ok')});
+bind('nextRootsStep',function(){var n=D.getElementById('rootsName'),o=D.getElementById('rootsOrigin'),ok=true;if(n&&!vRequired(n))ok=false;if(o&&!vRequired(o))ok=false;if(!ok){show('请填写必填项','err');return}show('信息已保存','ok');setTimeout(function(){pushPg('roots-identity')},500)});
+bind('submitAssist',function(){show('人工协助申请已提交','ok')});
+
+/* main click delegation */
+D.addEventListener('click',function(e){
+  var t=e.target;
+  // answer (MUST be before push to avoid data-push interception)
+  var ab=t.closest('[data-answer]');if(ab){e.preventDefault();var a=ab.dataset.answer;var card=D.getElementById('feedbackCard');var ti=D.getElementById('feedbackTitle');var re=D.getElementById('feedbackReason');
+    if(a==='A'){if(card)card.style.background='linear-gradient(135deg,#5a9e6f,#357f7d)';if(ti)ti.textContent='回答正确！';if(re)re.textContent='英银=英国银元，便船=不定期商船，符合1920-1935年菲律宾→厦门侨批特征。';show('回答正确！','ok')}else{if(card)card.style.background='linear-gradient(135deg,#c44e4e,#a85a48)';if(ti)ti.textContent='再想想！';if(re)re.textContent='注意信中"英银"和"便船"这两个关键词，它们指向特定时期和地区。';show('答案不正确','err')}
+    pushPg('study-feedback');return}
+  // push
+  var pb=t.closest('[data-push]');if(pb){e.preventDefault();pushPg(pb.dataset.push);return}
+  // pop
+  var pop=t.closest('[data-pop]');if(pop){e.preventDefault();popPg();return}
+  // nav tab
+  var nb=t.closest('.nav-tab');if(nb&&nb.dataset.nav){e.preventDefault();navRoot(nb.dataset.nav);return}
+  // prompt chip — use active page's chat box
+  var pc=t.closest('[data-prompt]');if(pc){var p=pc.dataset.prompt;var activeP=t.closest('.stack-page.active')||D.querySelector('.stack-page.active');var cl=activeP?activeP.querySelector('.chat-box'):null;if(!cl){cl=D.getElementById('chatLog')||D.getElementById('chatLog2')}if(cl){var ub=D.createElement('div');ub.className='chat-bub user';ub.textContent=p;var bb=D.createElement('div');bb.className='chat-bub bot';bb.innerHTML='<strong>智能检索</strong>已将「'+p+'」转为检索条件。';cl.appendChild(ub);cl.appendChild(bb);cl.scrollIntoView({behavior:'smooth',block:'end'})}}
+  // route chip
+  var rc=t.closest('.r-chip');if(rc){rc.parentElement.querySelectorAll('.r-chip').forEach(function(c){c.classList.remove('act')});rc.classList.add('act')}
+  // perm option
+  var po=t.closest('.perm-opt');if(po){var pc2=po.parentElement;pc2.querySelectorAll('.perm-opt').forEach(function(o){o.classList.remove('act')});po.classList.add('act');var de=pc2.parentElement.querySelector('.perm-detail');if(de){var pp=po.dataset.perm;var txt={personal:'<h4>个人使用</h4><p style="font-size:14px;color:var(--t2);margin-top:4px">素材仅保存在您的个人账户中，不会进入馆藏数据库。</p>',family:'<h4>家庭共享</h4><p style="font-size:14px;color:var(--t2);margin-top:4px">素材可在您授权的家庭成员之间共享。</p>',archive:'<h4>授权入馆</h4><p style="font-size:14px;color:var(--t2);margin-top:4px">素材经馆员复核后可正式纳入馆藏补充库。</p>'};de.innerHTML=txt[pp]||txt.personal}}
+  var ad2=D.getElementById('authDetail');if(ad2&&po&&po.closest('#authDetail')){var pp2=po.dataset.perm;var txt2={personal:'<h4>个人使用</h4><p style="font-size:14px;color:var(--t2);margin-top:4px">素材仅保存在您的个人账户中。</p>',family:'<h4>家庭共享</h4><p style="font-size:14px;color:var(--t2);margin-top:4px">在您授权的家庭成员间共享。</p>',archive:'<h4>授权入馆</h4><p style="font-size:14px;color:var(--t2);margin-top:4px">经馆员复核后纳入馆藏补充库。</p>'};ad2.innerHTML=txt2[pp2]||txt2.personal}
+  // segment
+  var sg=t.closest('.seg-btn');if(sg){var sp=sg.parentElement;if(sp){sp.querySelectorAll('.seg-btn').forEach(function(b){b.classList.remove('act')});sg.classList.add('act')}
+    var dl=D.getElementById('study-dialogue');if(dl){var ms=dl.querySelectorAll('.dialogue-msg');ms.forEach(function(m){m.style.display=m.classList.contains('npc')?'block':'none'})}}
+  // filter chip
+  var fc=t.closest('.f-chip');if(fc){var fp=fc.parentElement;if(fp){fp.querySelectorAll('.f-chip').forEach(function(c){c.classList.remove('act')});fc.classList.add('act')}}
+  // language segment
+  var lb=t.closest('#langSegment .seg-btn');if(lb){var lsp=lb.parentElement;if(lsp){lsp.querySelectorAll('.seg-btn').forEach(function(b){b.classList.remove('act')});lb.classList.add('act')}
+    var ltxt={zh:'沙坡尾是厦门港的起源地之一，早在明代就是渔船的避风良港。……',min:'沙坡尾是厦门港的起源地之一（闽南语讲解）……',en:'Shapowei is one of the origins of Xiamen Port...',child:'小朋友，沙坡尾是一个很老很老的码头哦！……'};var tb=D.getElementById('transcriptBox');if(tb)tb.textContent=ltxt[lb.dataset.lang]||ltxt.zh}
+  // claim opt
+  var co=t.closest('.claim-opt');if(co&&!co.id){co.parentElement.querySelectorAll('.claim-opt').forEach(function(o){o.style.background=''});var bg=co.classList.contains('sure')?'var(--o50)':co.classList.contains('unsure')?'var(--a50)':'var(--shv)';co.style.background=bg}
+  // empty button fallback
+  var btn=t.closest('button');if(btn&&!btn.dataset.push&&!btn.dataset.pop&&!btn.dataset.nav&&!btn.dataset.prompt&&!btn.dataset.open&&!btn.dataset.answer&&!btn.dataset.service&&!btn.dataset.perm&&!btn.dataset.lang&&!btn.dataset.poi&&!btn.dataset.study&&!btn.dataset.route&&!btn.dataset.year&&!btn.id&&!btn.closest('.claim-opt')&&!btn.closest('.seg-btn')&&!btn.closest('.f-chip')&&!btn.closest('.r-chip')&&!btn.closest('#langSegment')){
+    e.preventDefault();e.stopPropagation();var tn=btn.textContent.trim()||'按钮';show(tn+'：演示模式','ok')}
+});
+
+/* privacy modal */
+D.querySelectorAll('[data-open="privacy"]').forEach(function(b){b.addEventListener('click',function(){pOverlay.classList.add('open')})});
+D.getElementById('closePrivacy').addEventListener('click',function(){pOverlay.classList.remove('open')});
+pOverlay.addEventListener('click',function(e){if(e.target===pOverlay)pOverlay.classList.remove('open')});
+
+/* search enter */
+var gq=D.getElementById('globalQuery');if(gq)gq.addEventListener('keydown',function(e){if(e.key==='Enter')pushPg('search-results')});
+
+/* ESC */
+D.addEventListener('keydown',function(e){if(e.key==='Escape'){if(pOverlay.classList.contains('open'))pOverlay.classList.remove('open');else if(stack.length>0)popPg()}});
+
+})()
+</script>
+</body>
+</html>
